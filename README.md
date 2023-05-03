@@ -38,7 +38,12 @@
 
 ## 設計書
 
-※作成後追記
+テーブル定義書(https://docs.google.com/spreadsheets/d/1F860Gat4eXF3elsR5LEAhWnZm-dTVWGoaf3sarpqB00/edit?usp=sharing)
+アプリケーション詳細設計(https://docs.google.com/spreadsheets/d/16srDB3yXTKFbV4GBBAR8mJPBs1fD-bgyxVF57f1Du_I/edit?usp=sharing)
+ER図(https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1yLM3WNfOl4aEdo-7xzRKNKDekkNptI1i)
+adminワイヤーフレーム(https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1bWz8yYwTvuHf9z-yDXzOPKMaRgKvjfmG)
+publicワイヤーフレーム(https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1vH288r9Vp7d-CDf8I2zSi4iodY53MBoP)
+WBSシート(https://docs.google.com/spreadsheets/d/19kP_rELVRWHM3CCQLuMGYVoPPeotIwOOTFZh-VAMYmg/edit?usp=sharing)
 
 
 
