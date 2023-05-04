@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 2023_05_03_131301) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "article_id", null: false
+    t.integer "user"
+    t.integer "article"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "\"user_id\", \"article_id\"", name: "index_bookmarks_on_user_id_and_article_id", unique: true
   end
 
   create_table "comments", force: :cascade do |t|

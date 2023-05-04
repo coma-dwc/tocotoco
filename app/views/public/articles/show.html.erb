@@ -1,2 +1,10 @@
 <h1>public/articles#showページ</h1>
 <h2>publicの投稿詳細画面</h2>
+
+
+<!-- ブックマーク機能の記述 -->
+ <% if article.bookmarked_by?(current_user) %>
+    <%= link_to "ブックマーク", article_bookmarks_path(article), method: :post %>
+  <% else %>
+    <%= link_to "ブックマークを外す", article_bookmarks_path(@article), method: :delete %>
+  <% end %>
