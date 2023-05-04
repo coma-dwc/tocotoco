@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
     get '/post/hashtag/:name' => 'articles#hashtag'
     resources :comments, only: [:create, :destroy]
-    resources :todos, only: [:index, :create, :destroy]
+    resources :todos, only: [:new, :index, :create, :edit, :update, :destroy]
 
 
   end
