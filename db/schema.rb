@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_03_131301) do
+ActiveRecord::Schema.define(version: 2023_05_04_104022) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2023_05_03_131301) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "article_hashtags", id: false, force: :cascade do |t|
+    t.integer "article_id_id"
+    t.integer "hashtag_id_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id_id"], name: "index_article_hashtags_on_article_id_id"
+    t.index ["hashtag_id_id"], name: "index_article_hashtags_on_hashtag_id_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -94,6 +103,8 @@ ActiveRecord::Schema.define(version: 2023_05_03_131301) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "article_hashtags", "article_ids"
+  add_foreign_key "article_hashtags", "hashtag_ids"
   add_foreign_key "articles", "hashtags"
   add_foreign_key "todos", "users"
 end

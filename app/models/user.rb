@@ -9,6 +9,6 @@ class User < ApplicationRecord
          has_many :articles, dependent: :destroy
          has_many :todos, dependent: :destroy
 
-         validates :name, presences: true
-         validates :email, presences: true
+        validates :name, presence: true
+        validates :email, presence: true
 end

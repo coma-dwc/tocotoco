@@ -29,7 +29,10 @@ Rails.application.routes.draw do
     resources :articles do
     resource :bookmarks, only: %i[create destroy]
   end
+    get '/post/hashtag/:name' => 'articles#hashtag'
     resources :comments, only: [:create, :destroy]
     resources :todos, only: [:index, :create, :destroy]
+
+
   end
 end
