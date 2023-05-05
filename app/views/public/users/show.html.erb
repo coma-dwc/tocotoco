@@ -1,2 +1,22 @@
 <h1>public/users#showページ</h1>
 <h2>publicのユーザー情報詳細画面</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ゲストログイン時にプロフィール編集を行えないようにする記述--  >
+<#% if user.name != "guestuser" %>
+<div class='row'>
+  <#%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+</div>
+<#% end %>

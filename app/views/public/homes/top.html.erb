@@ -6,11 +6,23 @@
     </div>
   </div>
 
-  <div class="row mb-5">
-    <div class="col col-md-4">
-      <h3>Topic<br >
-      <small>新着記事</small></h3>
-      <!-- 新着投稿（カード）を入れる位置 -->
-    </div>
-  </div>
+  <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
+        <div class="row">
+          <%= link_to 'ログイン',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to '新規登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col col-md-4">
+          <h3>Topic<br >
+          <small>新着記事</small></h3>
+          <!-- 新着投稿（カード）を入れる位置 -->
+        </div>
+      </div>
 </div>
