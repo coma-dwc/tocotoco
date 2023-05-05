@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :users
+    get '/users/my_page' => 'users#show'
     resources :articles do
     resource :bookmarks, only: %i[create destroy]
   end

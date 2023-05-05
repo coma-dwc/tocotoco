@@ -29,6 +29,7 @@ class Article < ApplicationRecord
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
       article.hashtags << tag
     end
+  end
 
 
   def bookmarked_by?(user)
