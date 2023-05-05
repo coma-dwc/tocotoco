@@ -44,7 +44,7 @@ class Admin::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :user_id, :place_id, :hashtags, :image)
+    params.require(:article).permit(:title, :content, :user_id, :place_id, :hashtags, image: [] ) #写真複数投稿　配列形式で記述
   end
 
 end

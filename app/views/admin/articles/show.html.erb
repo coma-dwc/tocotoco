@@ -1,2 +1,12 @@
 <h1>admin/articles#showページ</h1>
 <h2>adminの管理者記事詳細画面</h2>
+
+
+
+<!-- 画像を表示する場所 -->
+<% if @article.image.attached? %>
+  <% @article.image.each do |image| %>
+    <%= image_tag image.variant(resize: '500x500') %>
+  <% end %>
+<% end %>
+<!-- ここまで -->
