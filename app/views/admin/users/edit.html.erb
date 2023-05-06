@@ -1,2 +1,41 @@
 <h1>admin/users#editページ</h1>
 <h2>adminのユーザー情報編集画面(ユーザーステータス有効or退会)</h2>
+
+<%= form_with model: @user, url: admin_user_path(@user.id) do |f| %>
+   <div class="container">
+     <div class="row">
+        <h2 class="bg-light"><%= @user.name %>さんの会員情報編集</h2>
+         <table class="table table-borderless">
+          <tr>
+           <td>ユーザーID</td>
+           <td><%= @user.id %></td>
+          </tr>
+          <tr>
+           <td>プロフィール画像</td>
+           <td><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></td>
+          </tr>
+          <tr>
+           <td>ニックネーム</td>
+           <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+           <td>メールアドレス</td>
+           <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td>ユーザーステータス</td>
+            <td>
+        　     <%= f.radio_button :is_deleted, false %>
+        　     <%= f.label :is_deleted, "有効"%>
+        　     <%= f.radio_button :is_deleted, true %>
+        　     <%= f.label :is_deleted, "退会" %>
+            </td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><%= f.submit '変更を保存', class: "btn btn-success" %></td>
+           </tr>
+          </table>
+      </div>
+    </div>
+    <% end %>

@@ -1,2 +1,24 @@
 <h1>public/users#unsubscribeページ</h1>
 <h2>publicのユーザー退会確認画面</h2>
+
+<div class="container">
+    <div class="row mt-5">
+       <div class=col>
+        <h2 class="text-center">アカウントを削除して退会しますか？</h2>
+       </div>
+    </div>
+    <div class="row">
+      <div class="mx-auto">
+        <p class="text-center my-3">
+          退会すると、全ての投稿データが削除されます。</br>
+          退会する場合は、「退会する」をクリックしてください。</br>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mx-auto">
+        <%= link_to "退会しない", user_path(@user.id),class: "btn btn-outline-info" %>&emsp;&emsp;
+        <%= link_to "退会する", user_path, method: :patch, data: { confilm: "本当に退会しますか？"},class: "btn btn-outline-danger"  %>
+      </div>
+    </div>
+</div>

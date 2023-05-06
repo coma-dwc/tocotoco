@@ -5,7 +5,7 @@
     <td>(<%= comment.created_at.strftime('%Y/%m/%d') %>)</td>
     <td>
       <% if comment.user == current_user %>
-        <%= link_to "削除", admin_comment_path(article_id: comment.article_id, id: comment.id), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
+        <%= link_to "削除", comment_path(article_id: comment.article_id, id: comment.id), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
       <% end %>
     </td>
   </tr>
