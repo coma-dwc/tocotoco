@@ -1,2 +1,27 @@
 <h1>admin/places#indexページ</h1>
 <h2>adminの都道府県データ一覧管理画面</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h3 class="bg-light">都道府県データ一覧・追加</h3>
+      <%= form_with model: @place, url: admin_places_create_path, method: :post do |f| %>
+      <div class="form-check form-check-inline">
+        <p>都道府県名&emsp;&emsp;<%= f.text_field :prefectures %>&emsp;&emsp;<%= f.submit '新規登録', class:"btn btn-success" %></p>
+      </div>
+      <% end %>
+
+      <table class="table">
+        <tr class="bg-light">
+          <td>都道府県</td>
+          <td></td>
+        </tr>
+        <% @places.each do |place| %>
+        <tr>
+          <td><%= place.name %></td>
+          <td><%= link_to "編集する", admin_places_edit_path(place), class:"btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

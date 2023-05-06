@@ -18,4 +18,10 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
+
+  has_one_attached :profile_image
+
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'default_image.jpg'
+  end
 end
