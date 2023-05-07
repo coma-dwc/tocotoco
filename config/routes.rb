@@ -20,20 +20,22 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :admin do
-    root to: 'homes#top'
+    root to: 'users#index'
     resources :articles
     resources :places, only: [:index, :create, :edit, :update]
-    resources :users
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :comments, only: [:create, :destroy]
   end
 
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resources :users
+    resources :users, only: [:edit, :update, :unsubscribe, :destroy]
     get '/users/my_page' => 'users#show'
-    resources :articles do
-    resource :bookmarks, only: %i[create destroy]
+    get '/users/unsubscribe' => 'users#unsubscribe'
+    get '/users/bookmark' => 'users#bookmark'
+    resources :articles, except: [:index] do
+    resource :bookmarks, only: [:create, :destroy]
   end
     get '/post/hashtag/:name' => 'articles#hashtag'
     resources :comments, only: [:create, :destroy]

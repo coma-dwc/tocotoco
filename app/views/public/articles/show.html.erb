@@ -10,8 +10,8 @@
             <td><!--プロフィール画像--></td>
             <td><!--投稿タイトル--></td>
             <td><!--投稿日時タイムスタンプ--></td>
-            <td id="bookmark-btn_<%= @article.id %>">
-              <%= render 'bookmarks/bookmark-btn', article: @article %>
+            <td id="bookmark_button_<%= @article.id %>">
+              <%= render 'bookmarks/bookmark', article: @article %>
             </td>
             <td><!--Editボタン--></td>
             <td><!--Destroyボタン--></td>

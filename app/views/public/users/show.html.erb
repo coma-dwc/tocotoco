@@ -14,13 +14,13 @@
             <td><%= image_tag @user.get_profile_image, size: '50x50' %></td>
           </tr>
           <tr>
-            <td><!-- Editボタン --></td>
+            <td><%= link_to "編集",  edit_user_path(@user.id), class: "btn btn-success" %><!-- Editボタン --></td>
           </tr>
           <tr>
-            <td><!-- ブックマーク一覧ボタン --></td>
+            <td><%= link_to "ブックマーク一覧",  users_bookmark_path(@user.id), class: "btn btn-success" %><!-- ブックマーク一覧ボタン --></td>
           </tr>
           <tr>
-            <td><!-- Todoリストボタン --></td>
+            <td><%= link_to "Todoリスト",  todos_path(@user.id), class: "btn btn-success" %><!-- Todoリストボタン --></td>
           </tr>
           </tbody>
       </table>

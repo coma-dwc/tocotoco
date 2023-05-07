@@ -33,8 +33,8 @@ before_action :authenticate_admin!
 
 private
 
-def genre_params
-  params.require(:genre).permit(:prefectures)
+def place_params
+  params.require(:place).permit(:prefectures)
 end
 
 end

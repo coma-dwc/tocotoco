@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  has_many_attached :images
 
   belongs_to :user
   has_many :bookmarks, dependent: :destroy
@@ -31,6 +32,14 @@ class Article < ApplicationRecord
     end
   end
 
+
+  def get_article_image(width, height)
+    if images.present?
+      image.variant(resize_to_fit: [width, height]).processed
+    else
+      ''
+    end
+  end
 
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?

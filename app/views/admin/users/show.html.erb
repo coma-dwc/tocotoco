@@ -13,16 +13,7 @@
             <td><%= image_tag @user.get_profile_image, size: '50x50' %></td>
           </tr>
           <tr>
-            <td><!-- Editボタン --></td>
-          </tr>
-          <tr>
-            <td><!-- ブックマーク一覧ボタン --></td>
-          </tr>
-          <tr>
-            <td><!-- Todoリストボタン --></td>
-          </tr>
-          <tr>
-            <td><!-- ユーザーステータスボタン --></td>
+            <td><%= link_to "編集",  edit_admin_user_path(@user.id), class: "btn btn-success" %><!-- Editボタン --></td>
           </tr>
           </tbody>
       </table>
@@ -34,6 +25,14 @@
           <td><%= @user.name %></td>
           <tr>自己紹介文</tr>
           <td colspan="3"><%= @user.introduction %></td>
+          <tr>会員ステータス</tr>
+          <td>
+            <% if @user.is_deleted == true %>
+            <td class="text-danger">退会済</td>
+            <% else %>
+            <td class="text-success">有効</td>
+            <% end %>
+          </td>
         </tbody>
       </table>
     </div>
