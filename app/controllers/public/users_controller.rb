@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
+    @articles = @user.articles
   end
 
   def edit
@@ -13,9 +14,9 @@ class Public::UsersController < ApplicationController
   def update
      @user = current_user
      if @user.update(user_params)
-        redirect_to user_path
+        redirect_to  users_my_page_path
      else
-        redirect_toedit_usert_path
+        redirect_to  users_my_page_path
      end
   end
 
@@ -36,7 +37,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :image, :email, :is_deleted, :todo_id)
+    params.require(:user).permit(:name, :introduction, :image, :email, :is_deleted, :todo_id, :profile_image)
   end
 
   def ensure_guest_user

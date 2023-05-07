@@ -2,6 +2,7 @@ class Public::TodosController < ApplicationController
 
   def new
     @todo = Todo.new
+  end
 
   def index
     @todos = Todo.all

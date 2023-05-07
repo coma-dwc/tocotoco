@@ -3,21 +3,21 @@
 <div class="mx-auto" style="width: 200px;">
 <h1>Task list</h1>
 </div>
-<h2><%= link_to 'Creat new Todo', new_todo_path ,class: 'btn btn-info'%></h2>
+<h2><%= link_to 'Create new Todo', new_todo_path ,class: 'btn btn-info'%></h2>
 <table class="table">
   <thead>
     <tr>
-      <td><%= todo.title %></td>
-      <td><%= link_to '編集', edit_todo_path(todo) ,class: 'btn btn-success' %></td>
-      <td><%= link_to '削除', todo_path(todo), method: :delete, class: 'btn btn-danger' %></td>
+      <th>タスク名</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-
-  <% @todos.each do |todo| %>
+    <% @todos.each do |todo| %>
     <tr>
-      <td><%= todo.title %></td>
+      <td><%= todo.task %></td>
+      <td><%= link_to '編集', edit_todo_path(todo) ,class: 'btn btn-success' %></td>
+      <td><%= link_to '削除', todo_path(todo), method: :delete, class: 'btn btn-danger' %></td>
     </tr>
-  <% end %>
-  </tbody>
+    <% end %>
+  <tbody>
 </table>

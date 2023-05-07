@@ -26,19 +26,19 @@ class User < ApplicationRecord
     (profile_image.attached?) ? profile_image : 'default_image.jpg'
   end
 
-  # def own?(object)
-  #   id == object.user_id
-  # end
+  def own?(object)
+    id == object.user_id
+  end
 
-  # def bookmark(article)
-  #   bookmarks_articles << article
-  # end
+  def bookmark(article)
+    bookmarks_articles << article
+  end
 
-  # def unbookmark(article)
-  #   bookmark_articles.delete(article)
-  # end
+  def unbookmark(article)
+    bookmark_articles.delete(article)
+  end
 
-  # def bookmark?(article)
-  #   bookmark_articles.include?(article)
-  # end
+  def bookmark?(article)
+    bookmark_articles.include?(article)
+  end
 end

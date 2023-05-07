@@ -39,14 +39,14 @@
     <!-- ユーザーの投稿一覧 -->
     <div class="row">
       <div>
-      <h4 class="col-lg-auto text-center">投稿一覧(全<%=@articles.count %>件)</h4>
+      <h4 class="col-lg-auto text-center">投稿一覧(全<#%=@articles.count %>件)</h4>
       </div>
       <div class="row">
         <% @articles.each do |article| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <%= link_to article_path(article) do %>
-              <p class="img-wrap"><%= image_tag article.get_image(200,200) %></p>
+              <p class="img-wrap"><%= image_tag article.get_article_image(200,200) %></p>
             <% end %>
             <div class="card-body">
               <p class="article-details card-text"><%= article.content %></p>

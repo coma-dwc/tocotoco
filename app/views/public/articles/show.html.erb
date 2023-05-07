@@ -7,14 +7,17 @@
       <div class="d-flex justify-content-start space-between">
         <table>
           <tr>
-            <td><!--プロフィール画像--></td>
-            <td><!--投稿タイトル--></td>
-            <td><!--投稿日時タイムスタンプ--></td>
+            <td><%= image_tag @user.get_profile_image, size:'100x100' %></td><!--プロフィール画像-->
+            <td><%= @article.title %></td><!--投稿タイトル-->
+            <td><%= link_to article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: article.id) %></td><!--投稿日時タイムスタンプ-->
             <td id="bookmark_button_<%= @article.id %>">
-              <%= render 'bookmarks/bookmark', article: @article %>
+              <%= render 'bookmarks/bookmark', article: @article %> <!--ブックマーク-->
             </td>
-            <td><!--Editボタン--></td>
-            <td><!--Destroyボタン--></td>
+
+            <% if @article.user == current_user %>
+            <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td><!--Editボタン-->
+            <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td><!--Destroyボタン-->
+            <% end %>
           </tr>
         </table>
 
