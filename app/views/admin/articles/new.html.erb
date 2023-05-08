@@ -18,12 +18,12 @@
       </div>
       </div>
 
-      <!--<div class="form-group row">-->
-      <!--  <label class="col-sm-4 col-form-label">画像アップロード（複数投稿可）</label>-->
-      <!--  <div class="col-sm-8">-->
-      <!--  <*%= f.attachment_field :images, multiple: true %>-->
-      <!--</div>-->
-      <!--</div>-->
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">画像アップロード（複数投稿可）</label>
+        <div class="col-sm-8">
+        <%= f.attachment_field :article_images_images, multiple: true %>
+      </div>
+      </div>
 
       <div class="form-group row">
         <label class="col-sm-4 col-form-label">本文</label>
@@ -35,7 +35,7 @@
       <div class="form-group row">
         <label class="col-sm-4 col-form-label">場所</label>
         <div class="col-sm-8">
-        <%= f.select :place_id, options_from_collection_for_select(Place.all, :prefectures),  { include_blank: "--選択してください--" }, class: "form-control" %>
+        <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :prefectures),  { include_blank: "--選択してください--" }, class: "form-control" %>
       </div>
       </div>
 

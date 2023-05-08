@@ -1,4 +1,4 @@
-class Image < ApplicationRecord
+class ArticleImage < ApplicationRecord
 
   belongs_to :article
 

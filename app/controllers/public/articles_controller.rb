@@ -24,6 +24,7 @@ class Public::ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
+    @tags =  @article.hashtags
   end
 
   def edit
@@ -58,7 +59,14 @@ class Public::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :user_id, :place_id, :hashtags, image: [] ) #写真複数投稿　配列形式で記述
+    params.require(:article).permit(:title, :content, :user_id, :place_id, :hashtags, images: [] ) #写真複数投稿　配列形式で記述
+  end
+
+def ensure_correct_user
+    @article = Article.find(params[:id])
+    if @article.user != current_user
+      redirect_to article_path
+    end
   end
 
 end

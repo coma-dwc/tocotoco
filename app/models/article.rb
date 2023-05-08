@@ -4,9 +4,11 @@ class Article < ApplicationRecord
   belongs_to :user
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :images, dependent: :destroy
+  has_many :article_images, dependent: :destroy
   has_many :article_hashtags, dependent: :destroy
   has_many :hashtags, through: :article_hashtags
+  # has_many :article_images, dependent: :destroy
+  # accepts_attachments_for :article_images, attachment: :image
 
   validates :user_id, presence: true
   validates :title, presence: true
@@ -33,9 +35,15 @@ class Article < ApplicationRecord
   end
 
 
+  # has_one_attached :profile_image
+
+  # def get_profile_image
+  #   (profile_image.attached?) ? profile_image : 'default_image.jpg'
+  # end
+
   def get_article_image(width, height)
     if images.present?
-      image.variant(resize_to_fit: [width, height]).processed
+      images.variant(resize_to_fit: [width, height]).processed
     else
       ''
     end
