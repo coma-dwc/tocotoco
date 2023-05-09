@@ -60,12 +60,12 @@
         <!--投稿記事本文-->
         <div class="row">
           <div class="col">
-          <p><%#= @article.content %></p>
-            <!--<#% @article.hashtags.each do |tag| %>-->
-            <!--<p>-->
-            <!--  <%#= tag.hashname %>-->
-            <!--</p> <!--ハッシュタグ表示欄--> <!--ハッシュタグ機能を作成してからコメントアウト外す-->
-            <!--<#% end %>-->
+          <p><%= @article.content %></p>
+            <% @article.hashtags.each do |tag| %>
+            <p>
+              <%= tag.hashname %>
+            </p> <!--ハッシュタグ表示欄--> <!--ハッシュタグ機能を作成してからコメントアウト外す-->
+            <% end %>
           </div>
         </div>
 

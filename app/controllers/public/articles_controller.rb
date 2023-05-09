@@ -46,14 +46,27 @@ class Public::ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  # def hashtag
+  #   @user = current_user
+  #   @tag = Hashtag.find_by(hashname: params[:name])
+  #   @articles = @tag.articles.build
+  #   @article  = @tag.articles.page(params[:page])
+  #   @comment    = Comment.new
+  #   @comments   = @articles.comments
+  # end
+
   def hashtag
-    @user = current_user
-    @tag = Hashtag.find_by(hashname: params[:name])
-    @articles = @tag.articles.build
-    @article  = @tag.articles.page(params[:page])
-    @comment    = Comment.new
-    @comments   = @articles.comments
+    if params[:name].nil?
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
+    else
+      name = params[:name]
+      name = name.downcase
+      @hashtag = Hashtag.find_by(hashname: name)
+      @article = @hashtag.articles
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
+    end
   end
+
 
 
   private

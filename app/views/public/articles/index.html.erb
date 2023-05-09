@@ -15,7 +15,13 @@
        <div class="col-md-4">
          <div class="card mb-4 shadow-sm">
            <%= link_to article_path(article) do %>
-           <p class="img-wrap"><%= image_tag article.get_article_image(200,200) %></p>
+           <p class="img-wrap">
+             <% if article.images.attached? %>
+               <%= image_tag article.images.variant(size: "200×200") %>
+             <% else %>
+               <%= image_tag "default_image.jpg", size: "200×200" %>
+              <% end %>
+           </p>
            <% end %>
            <div class="card-body">
              <p class="article-details card-text"><%= article.content %></p>

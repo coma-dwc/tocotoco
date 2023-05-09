@@ -1,5 +1,5 @@
 module Public::ArticlesHelper
   def render_with_hashtags(content)
-    content.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/){|word| link_to word, "/post/hashtag/#{word.delete("#")}"}.html_safe
+    content.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/){|word| link_to word, "/article/hashtag/#{word.delete("#")}",data: {"turbolinks" => false} }.html_safe
   end
 end

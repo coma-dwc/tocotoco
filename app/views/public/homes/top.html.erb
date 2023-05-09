@@ -22,24 +22,32 @@
         <div class="col col-md-4">
           <h3>Topic<br >
           <small>新着記事</small></h3>
-          <!-- 新着投稿（カード）を入れる位置 -->
-          <% @articles.first(3).each do |article| %>
+        </div>
+          <!-- 新着投稿（bootstrapカード）を入れる位置 -->
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <%= link_to article_path(article) do %>
-              <p class="img-wrap"><%= image_tag article.get_image(200,200) %></p>
-              <% end %>
-              <div class="card-body">
-                <p class="article-details card-text"><%= article.content %></p>
-              </div>
-              <div class="d-flex justify-conten-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm-outline-secondary">続きを見る</button> <!-- 要リンク -->
+            <!--<div class="card mb-4 shadow-sm">-->
+            <% @articles.each do |article| %>
+              <a href="/articles/<%= article.id %>" class="card h-100 m-0"></a>
+              <div class="card">
+                <div class="bd-placeholder-img card-img-top">
+                  <% if article.images.attached? %>
+                    <%# article.images.each do |image| %>
+                      <%#= image_tag image.variant( resize: "150x150" ).processed %>
+                    <%# end %>
+                    <%= image_tag article.images.first.variant( resize: "150x150" ).processed %>
+                  <% else %>
+                      <%= image_tag 'default_image.jpg' %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <p class="article-details card-text"><%= article.content %></p>
                 </div>
               </div>
-            </div>
+            <% end %>
+          <p class="text-right">
+            <%= link_to "その他の記事を見る", articles_path %>
+          </p>
           </div>
-          <% end %>
+          <%# end %>
         </div>
-      </div>
 </div>

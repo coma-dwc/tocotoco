@@ -34,9 +34,11 @@ Rails.application.routes.draw do
     get '/users/my_page' => 'users#show'
     get '/users/unsubscribe' => 'users#unsubscribe'
     get '/users/bookmark' => 'users#bookmark'
-    resources :articles
+    resources :articles do
+      get '/article/hashtag/:name' => 'articles#hashtag'
+      get '/article/hashtag' => 'articles#hashtag'
+    end
     resource :bookmarks, only: [:create, :destroy]
-    get '/post/hashtag/:name' => 'articles#hashtag'
     resources :comments, only: [:create, :destroy]
     resources :todos, only: [:new, :index, :create, :edit, :update, :destroy]
   end
