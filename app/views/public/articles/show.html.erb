@@ -61,10 +61,11 @@
         <div class="row">
           <div class="col">
           <p><%= @article.content %></p>
-            <% @article.hashtags.each do |tag| %>
+            <% @article.hashtags.each do |tag| %> <!--ハッシュタグ表示欄-->
             <p>
-              <%= tag.hashname %>
-            </p> <!--ハッシュタグ表示欄--> <!--ハッシュタグ機能を作成してからコメントアウト外す-->
+              <%= render_with_hashtags(@article.hashbody) %>
+              <%#= tag.hashname %>
+            </p>
             <% end %>
           </div>
         </div>

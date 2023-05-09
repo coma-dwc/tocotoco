@@ -75,7 +75,7 @@ class Public::ArticlesController < ApplicationController
     params.require(:article).permit(:title, :content, :user_id, :place_id, :hashtags, images: [] ) #写真複数投稿　配列形式で記述
   end
 
-def ensure_correct_user
+  def ensure_correct_user
     @article = Article.find(params[:id])
     if @article.user != current_user
       redirect_to article_path
