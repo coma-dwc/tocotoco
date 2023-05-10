@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   #ユーザー用ゲストログイン
   devise_scope :user do
-    post 'users/guest_session', to: 'public/sessions#guest_sign_in'
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
   # 管理者用

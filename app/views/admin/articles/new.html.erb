@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row">
-    <h4 class="col-lg-auto bg-light text-center">新規記事投稿</h4>
+    <h4 class="col-lg-auto bg-light text-center">管理者新規記事投稿</h4>
   </div>
 
   <div class="row justify-content-lg-center">
@@ -35,7 +35,7 @@
       <div class="form-group row">
         <label class="col-sm-4 col-form-label">場所</label>
         <div class="col-sm-8">
-        <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :prefectures),  { include_blank: "--選択してください--" }, class: "form-control" %>
+        <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :prefectures, f.object.place_id),  { include_blank: "--選択してください--" }, class: "form-control" %>
       </div>
       </div>
 
