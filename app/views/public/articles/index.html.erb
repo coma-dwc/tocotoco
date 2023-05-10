@@ -8,7 +8,7 @@
 
    <div class="row">
      <div>
-       <h4 class="col-lg-auto text-center">投稿一覧(全<#%=@articles.count %>件)</h4>
+       <h4 class="col-lg-auto text-center">投稿一覧(全<%=@articles.count %>件)</h4>
      </div>
      <div class="row">
        <% @articles.each do |article| %>
@@ -16,24 +16,25 @@
          <div class="card mb-4 shadow-sm">
            <%= link_to article_path(article) do %>
            <p class="img-wrap">
-             <% if article.images.attached? %>
-               <%= image_tag article.images.variant(size: "200×200") %>
+             <% if article.images.present? %>
+             <% article.images.each do |image| %>
+               <%= image_tag image.variant( resize: "150×150" ) %>
+             <% end %>
+
              <% else %>
-               <%= image_tag "default_image.jpg", size: "200×200" %>
+               <%= image_tag "default_image.jpg" %>
               <% end %>
            </p>
            <% end %>
            <div class="card-body">
              <p class="article-details card-text"><%= article.content.truncate(15) %></p>
            </div>
-           <!--<div class="d-flex justify-conten-between align-items-center">-->
-             <!--<div class="btn-group">-->
-             <!--  <button type="button" class="btn btn-sm-outline-secondary">続きを見る</button> <!-- 要リンク -->
-             <!--</div>-->
-           <!--</div>-->
          </div>
        </div>
        <% end %>
+     </div>
+     <div class="row justify-content-lg-center">
+       <%= paginate @articles %>
      </div>
    </div>
 </div>

@@ -1,0 +1,14 @@
+  <%= @tag.hashname %>の記事
+
+  <!-- ハッシュタグ検索結果　件数表示-->
+
+
+
+
+    <!-- 検索結果 記事表示-->
+    <% @articles.each do |article| %>
+       <%= article.user.name %>
+       <%= render_with_hashtags(article.content) %>
+    <% end %>
+
+    <%= link_to 'Back', articles_path %>

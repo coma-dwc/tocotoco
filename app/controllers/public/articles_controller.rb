@@ -17,6 +17,20 @@ class Public::ArticlesController < ApplicationController
     end
   end
 
+  def tag_articles
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @articles = @tag.articles
+    if params[:name].nil?
+      @tags = Hashtag.all.to_a.group_by{ |tag| tag.articles.count}
+    else
+      name = params[:name]
+      name = name.downcase
+      @tag = Hashtag.find_by(hashname: name)
+      @article = @tag.articles
+      @tags = Hashtag.all.to_a.group_by{ |tag| tag.articles.count}
+    end
+  end
+
   def index
     @articles = Article.all.page(params[:page]).per(12)
   end
@@ -55,17 +69,17 @@ class Public::ArticlesController < ApplicationController
   #   @comments   = @articles.comments
   # end
 
-  def hashtag
-    if params[:name].nil?
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
-    else
-      name = params[:name]
-      name = name.downcase
-      @hashtag = Hashtag.find_by(hashname: name)
-      @article = @hashtag.articles
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
-    end
-  end
+  # def hashtag
+  #   if params[:name].nil?
+  #     @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
+  #   else
+  #     name = params[:name]
+  #     name = name.downcase
+  #     @hashtag = Hashtag.find_by(hashname: name)
+  #     @article = @hashtag.articles
+  #     @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
+  #   end
+  # end
 
 
 

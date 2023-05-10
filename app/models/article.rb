@@ -13,7 +13,7 @@ class Article < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 1000 }
 
-  after_create do
+  after_save do
     article = Article.find_by(id: id)
     hashtags = content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|

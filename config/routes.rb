@@ -34,9 +34,9 @@ Rails.application.routes.draw do
     get '/users/my_page' => 'users#show'
     get '/users/unsubscribe' => 'users#unsubscribe'
     get '/users/bookmark' => 'users#bookmark'
+     get '/tags/:name' => 'articles#tag_articles', as: "tag"
     resources :articles do
-      get '/article/hashtag/:name' => 'articles#hashtag'
-      get '/article/hashtag' => 'articles#hashtag'
+
     end
     resource :bookmarks, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]

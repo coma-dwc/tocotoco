@@ -14,7 +14,7 @@
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               </li>
               <li class="nav-item">
-                <%= link_to "マイページ", users_my_page_path(current_user.id), class:"nav-link" %>
+                <%= link_to "マイページ", users_my_page_path, class:"nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to "投稿する", new_article_path, class:"nav-link" %>
@@ -26,14 +26,18 @@
             <!-- admin -->
              <% elsif admin_signed_in? %>
               <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, class:"nav-link", method: :delete %>
+              </li>
+              <li class="nav-item">
                 <%= link_to "ユーザー一覧", admin_root_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "投稿する（管理者）", new_admin_article_path, class:"nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to "記事一覧", admin_articles_path, class:"nav-link" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, class:"nav-link", method: :delete %>
-              </li>
+
 
               <!-- publicログアウト時の表示 -->
               <% else %>

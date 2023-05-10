@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @articles = @user.articles
+    @articles = @user.articles.page(params[:page]).per(6)
   end
 
   def edit
