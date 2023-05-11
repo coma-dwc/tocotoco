@@ -2,10 +2,10 @@
 <!-- <p><#%= article.title %></p>-->
 <!-- <p><#%= link_to article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: article.id) %></p>-->
 <!--</td>-->
-<!--<td>-->
+<td>
  <% if article.bookmarked_by?(current_user) %>
-   <%= link_to "", article_bookmarks_path(article), method: :delete, remote: true, class: "fas fa-bookmark" %></td>　<!--ブックマークを外す-->
+   <td><%= link_to "ブックマークする", article_path(article), method: :post, remote: true %></td> <!--ブックマークする-->
  <% else %>
-   <%= link_to "", article_path(article), method: :post, remote: true, class: "far fa-bookmark" %></td> <!--ブックマークする-->
+   <td><%= link_to "ブックマークを外す", article_bookmarks_path(article), method: :delete, remote: true %></td>　<!--ブックマークを外す-->
  <% end %>
 </td>

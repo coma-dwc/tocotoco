@@ -25,7 +25,7 @@
         <div class="row">
           <% if @article.images.present? %>
             <% @article.images.each do |image| %>
-              <%= image_tag image, class: "default_image", size: "200x200" %>
+              <%= image_tag image, class: "no_image", size: "200x200" %>
             <% end %>
           <% else %>
             画像はありません

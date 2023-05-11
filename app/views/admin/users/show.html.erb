@@ -51,9 +51,9 @@
                 <div class="bd-placeholder-img card-img-top">
                   <%= link_to article_path(article) do %>
                   <p class="img-wrap">
-                  <% if article.images.present? %>
+                  <% if article.images.attached? %>
                     <% article.images.each do |image| %>
-                      <%= image_tag image.variant( resize: "150x150" ).processed %>
+                      <%= image_tag article.images.first.variant( resize: "150x150" ).processed %>
                     <% end %>
 
                   <% else %>

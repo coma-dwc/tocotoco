@@ -16,13 +16,13 @@
          <div class="card mb-4 shadow-sm">
            <%= link_to article_path(article) do %>
            <p class="img-wrap">
-             <% if article.images.present? %>
+             <% if article.images.attached? %>
              <% article.images.each do |image| %>
-               <%= image_tag image.variant( resize: "150×150" ) %>
+               <%= image_tag image.variant( resize: "150x150" ).processed %>
              <% end %>
 
              <% else %>
-               <%= image_tag "default_image.jpg" %>
+               <%= image_tag "no_image.jpg" %>
               <% end %>
            </p>
            <% end %>

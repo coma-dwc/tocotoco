@@ -33,13 +33,25 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :update, :unsubscribe, :destroy]
     get '/users/my_page' => 'users#show'
     get '/users/unsubscribe' => 'users#unsubscribe'
-    get '/users/bookmark' => 'users#bookmark'
+    # get '/users/bookmark' => 'users#bookmark'
      get '/tags/:name' => 'articles#tag_articles', as: "tag"
     resources :articles do
-
+      resource :bookmarks, only: [:create, :destroy]
+      get '/bookmark' => 'articles#bookmark'
+      resources :comments, only: [:create, :destroy]
     end
-    resource :bookmarks, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
+    #以下追記
+    # resources :users, only: %i[new create]
+    # resources :articles do
+    #   resources collection do
+    #     get :bookmarks
+    #   end
+    # end
+
+    # resources :bookmarks, only: %i [crate destroy]
+
+    # resource :bookmarks, only: [:create, :destroy]
+
     resources :todos, only: [:new, :index, :create, :edit, :update, :destroy]
   end
 end

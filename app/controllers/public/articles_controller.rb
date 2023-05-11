@@ -60,6 +60,9 @@ class Public::ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def bookmark
+  @bookmarks = Bookmark.where(user_id: current_user.id)
+  end
   # def hashtag
   #   @user = current_user
   #   @tag = Hashtag.find_by(hashname: params[:name])

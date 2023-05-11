@@ -7,7 +7,7 @@ class Admin::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    if @article.save
+    if @article.save!
       redirect_to admin_article_path(@article.id)
     else
       render :new
@@ -44,7 +44,7 @@ class Admin::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :user_id, :place_id, :hashtags, images: [] ) #写真複数投稿　配列形式で記述
+    params.require(:article).permit(:title, :content, :place_id, :hashtags, images: [] ).merge(user_id:current_admin.id)
   end
 
 end

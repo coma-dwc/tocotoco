@@ -26,7 +26,7 @@ class Public::TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.fin(params[:id])
+    @todo = Todo.find(params[:id])
     @todo.destroy
     redirect_to todos_url
   end
