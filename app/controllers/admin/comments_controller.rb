@@ -1,23 +1,23 @@
 class Admin::CommentsController < ApplicationController
-  before_action :authenticate_admin!
+  # before_action :authenticate_admin!
 
-  def create
-    @article = Article.find(params[:article_id])
-    @comment = current_user.article_comments.new(article_comment_params)
-    @comment.article_id = @article.id
-    @comment.save
-  end
+  # def create
+  #   @article = Article.find(params[:article_id])
+  #   @comment = current_user.article_comments.new(article_comment_params)
+  #   @comment.article_id = @article.id
+  #   @comment.save
+  # end
 
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    @article = Article.find(params[:article_id])
-  end
+  # def destroy
+  #   @comment = Comment.find(params[:id])
+  #   @comment.destroy
+  #   @article = Article.find(params[:article_id])
+  # end
 
-  private
+  # private
 
-  def comment_params
-    params.require(:comment).permit(:user_id, :article_id, :body)
-  end
+  # def comment_params
+  #   params.require(:comment).permit(:user_id, :article_id, :body)
+  # end
 
 end

@@ -1,18 +1,18 @@
 class Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
-  def new
-    @article = Article.new
-  end
+  # def new
+  #   @article = Article.new
+  # end
 
-  def create
-    @article = Article.new(article_params)
-    if @article.save!
-      redirect_to admin_article_path(@article.id)
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @article = Article.new(article_params)
+  #   if @article.save!
+  #     redirect_to admin_article_path(@article.id)
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def index
     @articles = Article.all.page(params[:page]).per(12)
@@ -22,18 +22,18 @@ class Admin::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
+  # def edit
+  #   @article = Article.find(params[:id])
+  # end
 
-  def update
-    @article = Article.find(params[:id])
-    if @article.update(article_params)
-      redirect_to admin_article_path(@article.id)
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   @article = Article.find(params[:id])
+  #   if @article.update(article_params)
+  #     redirect_to admin_article_path(@article.id)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @article = Article.find(params[:id])
@@ -44,7 +44,7 @@ class Admin::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :place_id, :hashtags, images: [] ).merge(user_id:current_admin.id)
+    params.require(:article).permit(:title, :content, :place_id, :hashtags, images: [] )
   end
 
 end
