@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :update, :unsubscribe, :destroy]
     get '/users/my_page' => 'users#show'
     get '/users/unsubscribe' => 'users#unsubscribe'
+    delete '/users/delete' => 'users#delete'
     # get '/users/bookmark' => 'users#bookmark'
      get '/tags/:name' => 'articles#tag_articles', as: "tag"
     resources :articles do

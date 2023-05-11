@@ -4,24 +4,34 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-auto text-center">
-      <% @bookmarks.each do |bookmark| %>
-      <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-          <%= link_to article_path(article.id) do %>
-          <p class="img-wrap"><%= image_tag article.get_image(200,200) %></p>
-          <% end %>
-          <div class="card-body">
-            <p class="article-details card-text"><%= article.content %></p>
-          </div>
-          <div class="d-flex justify-conten-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm-outline-secondary">続きを見る</button> <!-- 要リンク -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  </div>
+     <div>
+       <h4 class="col-lg-auto text-center">ブックマーク一覧(全<%#=@bookmarks.count %>件)</h4>
+     </div>
+     <div class="row">
+       <% @bookmarks.each do |bookmark| %>
+       <div class="col-md-4">
+         <div class="card mb-4 shadow-sm">
+           <%= link_to article_bookmark_path(bookmark) do %>
+           <p class="img-wrap">
+             <% if article.images.attached? %>
+             <% article.images.each do |image| %>
+               <%= image_tag image.variant( resize: "150x150" ).processed %>
+             <% end %>
+
+             <% else %>
+               <%= image_tag "no_image.jpg" %>
+              <% end %>
+           </p>
+           <% end %>
+           <div class="card-body">
+             <p class="article-details card-text"><%= article.content.truncate(15) %></p>
+           </div>
+         </div>
+       </div>
+       <% end %>
+     </div>
+     <div class="row justify-content-lg-center">
+       <%#= paginate @bookmarks %>
+     </div>
+   </div>
 </div>

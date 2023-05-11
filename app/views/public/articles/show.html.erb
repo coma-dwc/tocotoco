@@ -13,8 +13,8 @@
             </td>
             <td><%= @article.title %></td><!--投稿タイトル-->
             <td><%= link_to @article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: @article.id) %></td><!--投稿日時タイムスタンプ-->
-            <td id="bookmark_button_<%= @article.id %>">
-              <%= render 'public/bookmarks/bookmark', article: @article %> <!--ブックマーク-->
+            <td id="bookmark_button_<%= @article.id %>"><!--ブックマーク-->
+              <%= render 'public/bookmarks/bookmark', article: @article %>
             </td>
 
             <% if @article.user == current_user %>

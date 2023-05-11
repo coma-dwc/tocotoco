@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
     @user.update(is_deleted: true)
     if @user.save
       reset_session
-      flash[:messege] = "ありがとうございました。またのご利用を心よりお待ちしています。"
+      flash[:messege] = "退会処理を行いました。今までご利用いただきありがとうございました。"
       redirect_to root_path
     end
   end

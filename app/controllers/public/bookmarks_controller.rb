@@ -16,27 +16,45 @@ class BookmarksController < ApplicationController
 #     # fallback_location: デフォルトの設定
 #   end
 
+  # def create
+  #   article = Article.find(params[:article_id])
+  #   bookmark = article.bookmarks.build(user_id: current_user.id)
+  #   if bookmark.save
+  #     redirect_to request.referer
+  #   else
+  #     redirect_to request.referer
+  #   end
+  # end
+
+  # def destroy
+  #   article = current_user.articles.find(params[:article_id])
+  #   bookmark = article.bookmarks.find_by(user_id: current_user.id)
+  #   if bookmark.present?
+  #     bookmark.destroy
+  #     redirect_to request.referer
+  #   else
+  #     redirect_to request.referer
+  #   end
+  # end
+
   def create
     article = Article.find(params[:article_id])
-    bookmark = article.bookmarks.build(user_id: current_user.id)
-    if bookmark.save
-      redirect_to request.referer
-    else
-      redirect_to request.referer
-    end
+    @bookmark = current_user.bookmarks.new(article_id: article.id)
+    @bookmark.save
+    # redirect_back(fallback_location: root_path) #リダイレクト先を削除することでjavascriptリクエストとなり、createアクション実行後はcreate.js.erbファイルを探すようになる
   end
 
   def destroy
-    article = current_user.articles.find(params[:article_id])
-    bookmark = article.bookmarks.find_by(user_id: current_user.id)
-    if bookmark.present?
-      bookmark.destroy
-      redirect_to request.referer
-    else
-      redirect_to request.referer
-    end
+    article = Article.find(params[:article_id])
+    @bookmark = current_user.bookmarks.find_by(article_id: article.id)
+    @bookmark.destroy
+    # redirect_back(fallback_location: root_path)   #リダイレクト先を削除することでjavascriptリクエストとなり、destroyアクション実行後はdestroy.js.erbファイルを探すようになる
   end
 
-  def index
-  end
+
+
+
+  # def index
+  # @bookmarks = current_customer.bookmarks.all
+  # end
 end
