@@ -13,6 +13,8 @@
           <tr>
             <td><%= image_tag @user.get_profile_image, size: '50x50' %></td>
           </tr>
+          <!--ゲストユーザーは編集、ブックマーク一覧、Todoリストのボタンを非表示-->
+          <% if @user.name != "guestuser" %>
           <tr>
             <td><%= link_to "編集",  edit_user_path(@user.id), class: "btn btn-success" %><!-- Editボタン --></td>
           </tr>
@@ -22,6 +24,7 @@
           <tr>
             <td><%= link_to "Todoリスト",  todos_path(@user.id), class: "btn btn-success" %><!-- Todoリストボタン --></td>
           </tr>
+          <% end %>
           </tbody>
       </table>
 
