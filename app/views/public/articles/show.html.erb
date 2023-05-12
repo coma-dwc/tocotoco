@@ -13,6 +13,8 @@
             </td>
             <td><%= @article.title %></td><!--投稿タイトル-->
             <td><%= link_to @article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: @article.id) %></td><!--投稿日時タイムスタンプ-->
+            <!--ゲストユーザーはブックマーク、編集、削除ボタンを非表示-->
+            <% if current_user && current_user.name != "guestuser" %>
             <td id="bookmark_button_<%= @article.id %>"><!--ブックマーク-->
               <%= render 'public/bookmarks/bookmark', article: @article %>
             </td>
@@ -20,6 +22,7 @@
             <% if @article.user == current_user %>
             <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td><!--Editボタン-->
             <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td><!--Destroyボタン-->
+            <% end %>
             <% end %>
           </tr>
         </table>
@@ -53,9 +56,12 @@
             <%= render partial: "public/comments/comment", locals: {article: @article} %>
             </div>
 
+            <!--ゲストユーザーはコメント入力欄を非表示-->
+            <% if current_user && current_user.name != "guestuser" %>
             <div id ="form">
               <%= render partial: "public/comments/form", locals: {article: @article, comment: @comment} %>
             </div>
+            <% end %>
           </div>
         </div>
 
