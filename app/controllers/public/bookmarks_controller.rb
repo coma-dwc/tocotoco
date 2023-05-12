@@ -37,6 +37,8 @@ class BookmarksController < ApplicationController
   #   end
   # end
 
+
+
   def create
     article = Article.find(params[:article_id])
     @bookmark = current_user.bookmarks.new(article_id: article.id)
@@ -52,9 +54,4 @@ class BookmarksController < ApplicationController
   end
 
 
-
-
-  # def index
-  # @bookmarks = current_customer.bookmarks.all
-  # end
 end

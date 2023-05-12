@@ -7,10 +7,11 @@
       <div class="d-flex justify-content-start space-between">
         <table>
           <tr><!--プロフィール画像-->
-            <td><%= link_to (@article.user) do %>
+            <td><%= link_to (users_my_page_path(@article.user)) do %>
                 <%= image_tag @article.user.get_profile_image, size: '50x50' %>
                 <% end %>
             </td>
+            <td><%= @article.user.name %>：</td>
             <td><%= @article.title %></td><!--投稿タイトル-->
             <td><%= link_to @article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: @article.id) %></td><!--投稿日時タイムスタンプ-->
             <!--ゲストユーザーはブックマーク、編集、削除ボタンを非表示-->
