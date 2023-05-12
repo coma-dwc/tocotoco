@@ -1,8 +1,12 @@
 <% article.comments.each do |comment| %>
   <tr>
+    <td><%= link_to (comment.user) do %>
+                <%= image_tag comment.user.get_profile_image, size: '50x50' %>
+                <% end %>
+    </td>
     <td><%= comment.user.name %>：</td>
     <td><%= comment.body %></td>
-    <td>(<%= comment.created_at.strftime('%Y/%m/%d') %>)</td>
+    <td>(<%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>)</td>
     <td>
       <% if comment.user == current_user %>
         <%= link_to "削除", article_comment_path(article_id: comment.article_id, id: comment.id), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
