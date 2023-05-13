@@ -5,6 +5,9 @@
   <div class="row">
     <h4 class="col-lg-auto bg-light text-center">記事一覧</h4>
   </div>
+  <div>
+  <%= render 'search', q: @q, url: articles_path %> <!--検索フォーム-->
+  </div>
 
    <div class="row">
      <div>

@@ -32,7 +32,9 @@ class Public::ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all.page(params[:page]).per(12)
+    # @articles = Article.all.page(params[:page]).per(12)
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).page(params[:page]).per(12)
   end
 
   def show
@@ -62,6 +64,7 @@ class Public::ArticlesController < ApplicationController
 
   def bookmark
   @bookmarks = Bookmark.where(user_id: current_user.id)
+  @bookmarks = Bookmark.all.page(params[:page]).per(12)
   end
 
   # def hashtag

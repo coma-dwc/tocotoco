@@ -51,4 +51,14 @@ class Article < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
   end
+
+  #キーワード検索
+  def self.ransackable_attributes(auth_object = nil)
+    ["content", "created_at", "hashtag_id", "id", "place_id", "title", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["article_hashtags", "bookmarks", "comments", "hashtags", "images_attachments", "images_blobs", "user"]
+  end
+
 end
