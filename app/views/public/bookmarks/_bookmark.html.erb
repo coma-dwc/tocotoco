@@ -4,7 +4,7 @@
     ブックマーク解除
     <% end %>
  <% else %>
-   <%= link_to article_path(article), method: :post, remote: true do %>
+   <%= link_to article_bookmarks_path(article), method: :post, remote: true do %>
    <i class="fa-regular fa-bookmark"></i>
    ブックマーク
    <% end %>

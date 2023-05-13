@@ -1,6 +1,4 @@
-Bookmarks_controller.rb
-
-class BookmarksController < ApplicationController
+class Public::BookmarksController < ApplicationController
 
 #   def create
 #     @article = Article.find(params[:article_id])
@@ -40,16 +38,18 @@ class BookmarksController < ApplicationController
 
 
   def create
-    article = Article.find(params[:article_id])
-    @bookmark = current_user.bookmarks.new(article_id: article.id)
-    @bookmark.save
+    @user = current_user
+    @article = Article.find(params[:article_id])
+    @bookmark = current_user.bookmarks.new(article_id: @article.id)
+    @bookmark.save!
     # redirect_back(fallback_location: root_path) #リダイレクト先を削除することでjavascriptリクエストとなり、createアクション実行後はcreate.js.erbファイルを探すようになる
   end
 
   def destroy
-    article = Article.find(params[:article_id])
-    @bookmark = current_user.bookmarks.find_by(article_id: article.id)
-    @bookmark.destroy
+    @user = current_user
+    @article = Article.find(params[:article_id])
+    @bookmark = current_user.bookmarks.find_by(article_id: @article.id)
+    @bookmark.destroy!
     # redirect_back(fallback_location: root_path)   #リダイレクト先を削除することでjavascriptリクエストとなり、destroyアクション実行後はdestroy.js.erbファイルを探すようになる
   end
 

@@ -13,8 +13,8 @@
          <div class="card mb-4 shadow-sm">
            <%= link_to article_bookmark_path(bookmark) do %>
            <p class="img-wrap">
-             <% if article.images.attached? %>
-             <% article.images.each do |image| %>
+             <% if bookmark.article.images.attached? %>
+             <% bookmark.article.images.each do |image| %>
                <%= image_tag image.variant( resize: "150x150" ).processed %>
              <% end %>
 
@@ -24,7 +24,7 @@
            </p>
            <% end %>
            <div class="card-body">
-             <p class="article-details card-text"><%= article.content.truncate(15) %></p>
+             <p class="article-details card-text"><%= bookmark.article.content.truncate(15) %></p>
            </div>
          </div>
        </div>

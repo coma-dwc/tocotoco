@@ -16,8 +16,10 @@
             <td><%= link_to @article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: @article.id) %></td><!--投稿日時タイムスタンプ-->
             <!--ゲストユーザーはブックマーク、編集、削除ボタンを非表示-->
             <% if current_user && current_user.name != "guestuser" %>
-            <td id="bookmark_button_<%= @article.id %>"><!--ブックマーク-->
-              <%= render 'public/bookmarks/bookmark', article: @article %>
+            <td><!--ブックマーク-->
+            <div id="bookmark_button_<%= @article.id %>">
+              <%= render 'public/bookmarks/bookmark', article: @article, current_user: current_user %>
+            </div>
             </td>
 
             <% if @article.user == current_user %>
