@@ -5,7 +5,7 @@ class Public::TodosController < ApplicationController
   end
 
   def index
-    @todos = Todo.all
+    @todos = Todo.where(user_id: current_user.id)
   end
 
   def create

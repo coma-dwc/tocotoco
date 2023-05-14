@@ -65,7 +65,7 @@ class Public::ArticlesController < ApplicationController
 
   def bookmark
   @bookmarks = Bookmark.where(user_id: current_user.id)
-  @bookmarks = Bookmark.all.page(params[:page]).per(12)
+  @bookmarks = @bookmarks.page(params[:page]).per(12)
   end
 
 
