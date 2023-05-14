@@ -1,10 +1,7 @@
-<h1>admin/users#editページ</h1>
-<h2>adminのユーザー情報編集画面(ユーザーステータス有効or退会)</h2>
-
 <%= form_with model: @user, url: admin_user_path(@user.id) do |f| %>
    <div class="container">
      <div class="row">
-        <h2 class="bg-light"><%= @user.name %>さんの会員情報編集</h2>
+        <h4 class="bg-light"><%= @user.name %>さんの会員情報編集</h4>
          <table class="table table-borderless">
           <tr>
            <td>ユーザーID</td>

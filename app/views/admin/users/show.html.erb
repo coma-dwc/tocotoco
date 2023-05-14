@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <div class="col">
+    <div class="col-md-4">
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -16,21 +16,26 @@
           </tbody>
       </table>
     </div>
+
     <div class="col">
       <table class="table table-borderless">
         <tbody>
-          <tr>ニックネーム</tr>
-          <td><%= @user.name %></td>
-          <tr>自己紹介文</tr>
-          <td colspan="3"><%= @user.introduction %></td>
-          <tr>会員ステータス</tr>
-          <td>
+          <tr>
+            <td colspan="2">ニックネーム</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td colspan="2">自己紹介文</td>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td colspan="2">会員ステータス</td>
             <% if @user.is_deleted == true %>
             <td class="text-danger">退会済</td>
             <% else %>
             <td class="text-success">有効</td>
             <% end %>
-          </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -42,14 +47,12 @@
       <h4 class="col-lg-auto text-center">投稿一覧(全<%=@articles.count %>件)</h4>
       </div>
       <div class="row">
-        <div class="col-md-4">
-            <!--<div class="card mb-4 shadow-sm">-->
             <% @articles.each do |article| %>
-              <a href="/articles/<%= article.id %>" class="card h-100 m-0"></a>
-              <div class="card">
-                <div class="bd-placeholder-img card-img-top">
+            <div class="col-md-4">
+              <a href="/articles/<%= article.id %>" class="card"></a>
+              <div class="card mb-4 shadow-sm">
+                <div class="card-img-top">
                   <%= link_to article_path(article) do %>
-                  <p class="img-wrap">
                   <% if article.images.attached? %>
                     <% article.images.each do |image| %>
                       <%= image_tag article.images.first.variant( resize: "150x150" ).processed %>
@@ -58,21 +61,19 @@
                   <% else %>
                       <%= image_tag 'default_image.jpg' %>
                   <% end %>
-                  </p>
                   <% end %>
                 </div>
                 <div class="card-body">
                   <p class="article-details card-text"><%= article.content.truncate(15) %></p>
                 </div>
               </div>
+             </div>
             <% end %>
+      </div>
+    </div>
             <div class="row justify-content-lg-center">
                <%= paginate @articles %>
            </div>
-          </div>
-        </div>
-
-      </div>
-      </div>
     </div>
+  </div>
 </div>

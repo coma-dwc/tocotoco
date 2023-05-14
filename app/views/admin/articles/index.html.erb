@@ -1,24 +1,22 @@
-<h1>admin/articles#indexページ</h1>
 <div class="container">
   <div class="row">
     <h4 class="col-lg-auto bg-light text-center">記事一覧</h4>
   </div>
 
-  <div class="row justify-content-end">
-    <%= link_to new_admin_article_path do %>
-    <i class="fas fa-plus-circle fa-2x" style="color: #bfc5cf;"></i>
-    <% end %>
-  </div>
-
-   <div class="row">
-        <div class="col-md-4">
-            <!--<div class="card mb-4 shadow-sm">-->
+  <div class="row justify-content-lg-center">
+    <table class="table table-borderless table-hover table-inverse border-top border-bottom">
+      <thead class="thead-light">
+        <tr>
+          <th>タイトル</th>
+          <th>画像</th>
+        </tr>
+        </thead>
+        <tbody>
             <% @articles.each do |article| %>
-              <a href="/articles/<%= article.id %>" class="card h-100 m-0"></a>
-              <div class="card">
-                <div class="bd-placeholder-img card-img-top">
-                  <%= link_to article_path(article) do %>
-                  <p class="img-wrap">
+              <a href="/articles/<%= article.id %>"></a>
+                <tr>
+                  <td><%= link_to article_path(article) do %></td>
+                  <td>
                   <% if article.images.attached? %>
                     <% article.images.each do |image| %>
                     <% end %>
@@ -26,17 +24,16 @@
                   <% else %>
                       <%= image_tag 'no_image.jpg' %>
                   <% end %>
-                  </p>
                   <% end %>
-                </div>
-                <div class="card-body">
-                  <p class="article-details card-text"><%= article.content.truncate(15) %></p>
-                </div>
-              </div>
+                </td>
+                </tr>
+                <tr>
+                  <td><p class="article-details card-text"><%= article.content.truncate(15) %></p></td>
             <% end %>
+        </tbody>
+    </table>
             <div class="row justify-content-lg-center">
                <%= paginate @articles %>
            </div>
-          </div>
-        </div>
+  </div>
 </div>
