@@ -1,59 +1,58 @@
-  <header>
+<!--<body class="d-flex flex-column vh-100">-->
+  <header class="shadow-sm">
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/"><span><%= image_tag 'tocotoco_logo.png',size: "200x200" %>︎</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <div class="container">
+        <a class="navbar-brand" href="/"><span><%= image_tag 'tocotoco_logo.png',size: "100x100" %>︎</span></a>
+        <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+          <!--<span class="navbar-toggler-icon"></span>--> <!--サンドイッチ-->
+        <!--</button>-->
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mr-auto">
             <!-- publicログイン時の表示 -->
             <% if user_signed_in? %>
-              <li class="nav-item">
+              <ul class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-              </li>
-              <li class="nav-item">
+              </ul>
+              <ul class="nav-item">
                 <%= link_to "マイページ", users_my_page_path, class:"nav-link" %>
-              </li>
+              </ul>
               <!--ゲストユーザーログイン時投稿するボタン非表示-->
               <% if current_user.is_not_guest? %>
-              <li class="nav-item">
+              <ul class="nav-item">
                 <%= link_to "投稿する", new_article_path, class:"nav-link" %>
-              </li>
+              </ul>
               <% end %>
-              <li class="nav-item">
+              <ul class="nav-item">
                 <%= link_to "記事一覧", articles_path, class:"nav-link" %>
-              </li>
+              </ul>
 
             <!-- admin -->
              <% elsif admin_signed_in? %>
-              <li class="nav-item">
+              <ul class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, class:"nav-link", method: :delete %>
-              </li>
-              <li class="nav-item">
+              </ul>
+              <ul class="nav-item">
                 <%= link_to "ユーザー一覧", admin_root_path, class:"nav-link" %>
-              </li>
-              <li class="nav-item">
+              </ul>
+              <ul class="nav-item">
                 <%= link_to "記事一覧", admin_articles_path, class:"nav-link" %>
-              </li>
-              <li class="nav-item">
+              </ul>
+              <ul class="nav-item">
                 <%= link_to "都道府県データ一覧", admin_places_path, class:"nav-link" %>
-              </li>
+              </ul>
 
 
               <!-- publicログアウト時の表示 -->
               <% else %>
-              <li class="nav-item">
+              <ul class="nav-item">
                 <%= link_to "新規登録", new_user_registration_path, class:"nav-link" %>
-              </li>
-              <li class="nav-item">
+              </ul>
+              <ul class="nav-item">
                 <%= link_to "ログイン", new_user_session_path, class:"nav-link" %>
-              </li>
-              <li class="nav-item">
+              </ul>
+              <ul class="nav-item">
                 <%= link_to "About", about_path, class:"nav-link" %>
-              </li>
+              </ul>
           <% end %>
-        </div>
+      </div>
     </nav>
   </header>
