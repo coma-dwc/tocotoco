@@ -1,6 +1,3 @@
-<h1>public/articles#showページ</h1>
-<h2>publicの投稿詳細画面</h2>
-
 <div class="container">
   <div class="row">
     <div class="col">
@@ -14,6 +11,7 @@
             <td><%= @article.user.name %>：</td>
             <td><%= @article.title %></td><!--投稿タイトル-->
             <td><%= link_to @article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: @article.id) %></td><!--投稿日時タイムスタンプ-->
+
             <!--ゲストユーザーはブックマーク、編集、削除ボタンを非表示-->
             <% if current_user && current_user.name != "guestuser" %>
             <td><!--ブックマーク-->
@@ -29,6 +27,7 @@
             <% end %>
           </tr>
         </table>
+      </div>
 
         <!--投稿の画像-->
         <div class="row">
@@ -68,7 +67,6 @@
           </div>
         </div>
 
-      </div>
     </div>
   </div>
 </div>
