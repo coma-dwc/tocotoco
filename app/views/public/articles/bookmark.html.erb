@@ -1,18 +1,19 @@
-<div class="container"><!--usersフォルダからarticlesフォルダに移動-->
+<div class="container">
   <div class="row">
-    <h4 class="col-lg-auto bg-light text-center">ブックマーク一覧</h4>
+    <h4 class="col-lg-auto text-center">ブックマーク一覧</h4>
   </div>
 
   <div class="row">
      <div>
-       <h4 class="col-lg-auto text-center">ブックマーク一覧(全<%=@bookmarks.count %>件)</h4>
+       <h5 class="col-lg-auto text-center">ブックマーク一覧(全<%=@bookmarks.count %>件)</h5>
      </div>
+     <div class="container">
      <div class="row">
        <% @bookmarks.each do |bookmark| %>
        <div class="col-md-4">
-         <div class="card mb-4 shadow-sm">
            <%= link_to article_path(bookmark.article.id) do %>
-           <p class="img-wrap">
+           <div class="card mb-4 shadow-sm">
+             <div class="card-img-top">
              <% if bookmark.article.images.attached? %>
              <% bookmark.article.images.each do |image| %>
                <%= image_tag image.variant( resize: "150x150" ).processed %>
@@ -21,14 +22,15 @@
              <% else %>
                <%= image_tag "no_image.jpg" %>
               <% end %>
-           </p>
            <% end %>
+           </div>
            <div class="card-body">
              <p class="article-details card-text"><%= bookmark.article.content.truncate(15) %></p>
            </div>
          </div>
        </div>
        <% end %>
+     </div>
      </div>
      <div class="row justify-content-lg-center">
        <%= paginate @bookmarks %>

@@ -29,10 +29,14 @@
     <div class="col">
       <table class="table table-borderless">
         <tbody>
-          <tr>ニックネーム</tr>
-          <td><%= @user.name %></td>
-          <tr>自己紹介文</tr>
-          <td colspan="3"><%= @user.introduction %></td>
+          <tr>
+            <td colspan="2">ニックネーム</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td colspan="2">自己紹介文</td>
+            <td><%= @user.introduction %></td>
+          </tr>
         </tbody>
       </table>
     </div>
