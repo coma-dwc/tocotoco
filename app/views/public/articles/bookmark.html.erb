@@ -11,7 +11,7 @@
        <% @bookmarks.each do |bookmark| %>
        <div class="col-md-4">
          <div class="card mb-4 shadow-sm">
-           <%= link_to article_bookmark_path(bookmark) do %>
+           <%= link_to article_path(bookmark.article.id) do %>
            <p class="img-wrap">
              <% if bookmark.article.images.attached? %>
              <% bookmark.article.images.each do |image| %>

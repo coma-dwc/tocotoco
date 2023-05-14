@@ -1,6 +1,7 @@
 class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_guest_user, except: [:show, :index]
 
   def new
     @article = Article.new
@@ -67,27 +68,6 @@ class Public::ArticlesController < ApplicationController
   @bookmarks = Bookmark.all.page(params[:page]).per(12)
   end
 
-  # def hashtag
-  #   @user = current_user
-  #   @tag = Hashtag.find_by(hashname: params[:name])
-  #   @articles = @tag.articles.build
-  #   @article  = @tag.articles.page(params[:page])
-  #   @comment    = Comment.new
-  #   @comments   = @articles.comments
-  # end
-
-  # def hashtag
-  #   if params[:name].nil?
-  #     @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
-  #   else
-  #     name = params[:name]
-  #     name = name.downcase
-  #     @hashtag = Hashtag.find_by(hashname: name)
-  #     @article = @hashtag.articles
-  #     @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
-  #   end
-  # end
-
 
 
   private
@@ -102,5 +82,10 @@ class Public::ArticlesController < ApplicationController
       redirect_to article_path
     end
   end
+
+  def ensure_guest_user
+  redirect_to root_path unless current_user && current_user.is_not_guest?
+  end
+
 
 end

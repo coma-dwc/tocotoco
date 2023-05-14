@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :articles
     resources :places, only: [:index, :create, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:destroy]
   end
 
   scope module: :public do

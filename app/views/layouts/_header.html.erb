@@ -16,9 +16,12 @@
               <li class="nav-item">
                 <%= link_to "マイページ", users_my_page_path, class:"nav-link" %>
               </li>
+              <!--ゲストユーザーログイン時投稿するボタン非表示-->
+              <% if current_user.is_not_guest? %>
               <li class="nav-item">
                 <%= link_to "投稿する", new_article_path, class:"nav-link" %>
               </li>
+              <% end %>
               <li class="nav-item">
                 <%= link_to "記事一覧", articles_path, class:"nav-link" %>
               </li>
@@ -31,11 +34,11 @@
               <li class="nav-item">
                 <%= link_to "ユーザー一覧", admin_root_path, class:"nav-link" %>
               </li>
-              <!--<li class="nav-item">-->
-              <!--  <%#= link_to "投稿する（管理者）", new_admin_article_path, class:"nav-link" %>-->
-              <!--</li>-->
               <li class="nav-item">
                 <%= link_to "記事一覧", admin_articles_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "都道府県データ一覧", admin_places_path, class:"nav-link" %>
               </li>
 
 

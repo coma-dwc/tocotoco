@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
-  # before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   # def create
   #   @article = Article.find(params[:article_id])
@@ -8,16 +8,24 @@ class Admin::CommentsController < ApplicationController
   #   @comment.save
   # end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    @article = Article.find(params[:article_id])
+  end
   # def destroy
   #   @comment = Comment.find(params[:id])
-  #   @comment.destroy
-  #   @article = Article.find(params[:article_id])
+  #   if current_admin || @comment.user == current_user
+  #     @comment.destroy
+  #     redirect_to @comment.article, notice: 'コメントを削除しました'
+  #   else
+  #     redirect_to root_path, alert: '権限がありません'
+  #   end
   # end
-
   # private
 
-  # def comment_params
-  #   params.require(:comment).permit(:user_id, :article_id, :body)
-  # end
+  def comment_params
+    params.require(:comment).permit(:user_id, :article_id, :body)
+  end
 
 end
