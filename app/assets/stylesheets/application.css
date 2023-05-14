@@ -22,3 +22,16 @@
   --swiper-navigation-color: #ffffff;
   --swiper-pagination-color: #ffffff;
 }
+
+/*.swiper-slide {*/
+/* width: 100%;*/
+/* max-height: 500px;*/
+/* min-height: 250px;*/
+/*}*/
+
+/*.swiper-slide img {*/
+/* width: 100%;*/
+/* min-height: 250px;*/
+/* object-fit: cover;*/
+/*}*/
+

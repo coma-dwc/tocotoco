@@ -1,7 +1,7 @@
 <!--<body class="d-flex flex-column vh-100">-->
   <header class="shadow-sm">
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <div class="container">
+      <div class="container-fluid">
         <a class="navbar-brand" href="/"><span><%= image_tag 'tocotoco_logo.png',size: "100x100" %>︎</span></a>
         <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
           <!--<span class="navbar-toggler-icon"></span>--> <!--サンドイッチ-->
@@ -9,7 +9,7 @@
 
             <!-- publicログイン時の表示 -->
             <% if user_signed_in? %>
-              <ul class="nav-item">
+              <ul class="nav-item ml-auto">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               </ul>
               <ul class="nav-item">
@@ -27,7 +27,7 @@
 
             <!-- admin -->
              <% elsif admin_signed_in? %>
-              <ul class="nav-item">
+              <ul class="nav-item ml-auto">
                 <%= link_to "ログアウト", destroy_admin_session_path, class:"nav-link", method: :delete %>
               </ul>
               <ul class="nav-item">
@@ -43,7 +43,7 @@
 
               <!-- publicログアウト時の表示 -->
               <% else %>
-              <ul class="nav-item">
+              <ul class="nav-item ml-auto">
                 <%= link_to "新規登録", new_user_registration_path, class:"nav-link" %>
               </ul>
               <ul class="nav-item">
