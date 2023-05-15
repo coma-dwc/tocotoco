@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
 
   def create
+    @user = current_user
     @article = Article.find(params[:article_id])
     @comment = current_user.comments.new(comment_params)
     @comment.article_id = @article.id
@@ -8,6 +9,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     @comment.destroy

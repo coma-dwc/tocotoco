@@ -7,19 +7,16 @@
     <div class="col">
       <table class="table table-borderless">
         <tbody>
-          <tr>
-            <td><%= image_tag @user.get_profile_image, size: '50x50' %></td>
-          </tr>
           <!--ゲストユーザーは編集、ブックマーク一覧、Todoリストのボタンを非表示-->
           <% if @user.is_not_guest? %>
           <tr>
-            <td><%= link_to "編集",  edit_user_path(@user.id), class: "btn btn-success" %><!-- Editボタン --></td>
+            <td><%= link_to "ユーザー情報編集",  edit_user_path(@user.id), class: "btn btn-outline-success" %><!-- Editボタン --></td>
           </tr>
           <tr>
-            <td><%= link_to "ブックマーク一覧",  article_bookmark_path(@user.id), class: "btn btn-success" %><!-- ブックマーク一覧ボタン --></td>
+            <td><%= link_to "ブックマーク一覧",  article_bookmark_path(@user.id), class: "btn btn-outline-warning" %><!-- ブックマーク一覧ボタン --></td>
           </tr>
           <tr>
-            <td><%= link_to "Todoリスト",  todos_path(@user.id), class: "btn btn-success" %><!-- Todoリストボタン --></td>
+            <td><%= link_to "Todoリスト",  todos_path(@user.id), class: "btn btn-outline-info" %><!-- Todoリストボタン --></td>
           </tr>
           <% end %>
           </tbody>
@@ -29,6 +26,9 @@
     <div class="col">
       <table class="table table-borderless">
         <tbody>
+          <tr>
+            <td><%= image_tag @user.get_profile_image, size: '80x80' %></td>
+          </tr>
           <tr>
             <td colspan="2">ニックネーム</td>
             <td><%= @user.name %></td>
@@ -44,8 +44,8 @@
 </div>
 
     <!-- ユーザーの投稿一覧 -->
-    <div class="container">
-    <div class="row">
+<div class="container">
+  <div class="row">
       <div>
       <h4 class="col-lg-auto text-center">投稿一覧(全<%=@articles.count %>件)</h4>
       </div>
@@ -73,8 +73,10 @@
             </div>
             <% end %>
       </div>
-    </div>
-            <div class="row justify-content-lg-center">
-               <%= paginate @articles %>
-           </div>
-    </div>
+  </div>
+  <nav aria-label="Page navigation example">
+  <div class="pagination justify-content-center">
+    <%= paginate @articles %>
+  </div>
+  </nav>
+</div>

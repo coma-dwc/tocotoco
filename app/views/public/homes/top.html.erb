@@ -1,20 +1,28 @@
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #dae9db;">
   <div class="row-fluid">
     <div class="col-md-4-fluid">
       <!-- スライドショーを入れる位置 -->
       <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="/assets/top_thumbnail-1.jpg" alt=""><!--青緑-->
+          <div class="swiper__box">
+            <img src="/assets/top_thumbnail-1.jpg" alt=""><!--青緑-->
+          </div>
         </div>
         <div class="swiper-slide">
-          <img src="/assets/top_thumbnail-2.jpg" alt=""> <!--黄色 -->
+          <div class="swiper__box">
+            <img src="/assets/top_thumbnail-2.jpg" alt=""> <!--黄色 -->
+          </div>
         </div>
         <div class="swiper-slide">
-          <img src="/assets/top_thumbnail-3.jpg" alt=""> <!--ピンク -->
+          <div class="swiper__box">
+            <img src="/assets/top_thumbnail-3.jpg" alt=""> <!--ピンク -->
+          </div>
         </div>
         <div class="swiper-slide">
-          <img src="/assets/top_thumbnail-4.jpg" alt=""> <!--緑青グラデ -->
+          <div class="swiper__box">
+            <img src="/assets/top_thumbnail-4.jpg" alt=""> <!--緑青グラデ -->
+          </div>
         </div>
       </div>
       <!-- ページネーションの要素 -->
@@ -74,6 +82,8 @@ const swiper = new Swiper('.swiper', {
   navigation: {
     nextEl: '.swiper-button-next', //「次へボタン」要素の指定
     prevEl: '.swiper-button-prev', //「前へボタン」要素の指定
-  }
+  },
+  centeredSlides: true,
+  slidesPerView: 2
 });
 </script>

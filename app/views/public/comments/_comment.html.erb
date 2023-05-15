@@ -1,8 +1,9 @@
+<table class="table">
 <% article.comments.each do |comment| %>
   <tr>
     <td><%= link_to (comment.user) do %>
-                <%= image_tag comment.user.get_profile_image, size: '50x50' %>
-                <% end %>
+          <%= image_tag comment.user.get_profile_image, size: '50x50' %>
+        <% end %>
     </td>
     <td><%= comment.user.name %>：</td>
     <td><%= comment.body %></td>
@@ -14,3 +15,4 @@
     </td>
   </tr>
 <% end %>
+</table>
