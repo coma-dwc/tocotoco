@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h4 class="col-lg-auto text-center my-3">記事一覧</h4>
+    <h4 class="heading col-lg-auto text-center my-3">記事一覧</h4>
   </div>
   <div>
   <%= render 'search', q: @q, url: articles_path %> <!--検索フォーム-->
@@ -8,7 +8,7 @@
 
    <div class="row">
      <div>
-       <h5 class="col-lg-auto text-center">投稿一覧(全<%=@articles.count %>件)</h5>
+       <h5 class="col-lg-auto text-center my-3">投稿一覧(全<%=@articles.count %>件)</h5>
      </div>
      <div class="row">
        <% @articles.each do |article| %>
@@ -30,7 +30,8 @@
                <!--ハッシュタグ表示-->
                <div class="mt-3">
                <% article.article_hashtags.each do |article_hashtag| %>
-               <%= article_hashtag.hashtag.hashname %>
+               <i class="fas fa-tag"></i>
+               <%= link_to article_hashtag.hashtag.hashname, tag_path(name: article_hashtag.hashtag.hashname) %>
                <% end %>
                <!--都道府県データ-->
 
