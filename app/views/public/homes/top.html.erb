@@ -50,7 +50,7 @@
                   <% if article.images.attached? %>
                     <%= image_tag article.images.first.variant( resize: "" ).processed, class: "card-img-to", style: "width: 100%; height: 180px; object-fit: cover;" %>
                   <% else %>
-                      <%= image_tag 'no_image.jpg' %>
+                      <%= image_tag 'no_image.jpg',style: "width: 100%; height: 180px; object-fit: cover;" %>
                   <% end %>
                   <% end %>
                 <!--</div>-->
