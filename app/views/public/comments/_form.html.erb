@@ -1,4 +1,4 @@
-<%= form_with(model:[article, comment], local: false, class:"form-inline") do |f| %>
-  <%= f.text_area :body, class:"col-md-6 form-control", size:"20x6", placeholder: "コメントを入力" %>
+<%= form_with(model:[article, comment], local: false, class:"form") do |f| %>
+  <%= f.text_area :body, class:"col-md-6 form-control", size:"20x6", placeholder: "ここにコメントを入力してください" %>
   <%= f.submit "コメント投稿", class:"col-md-2 btn btn-outline-success" %>
 <% end %>

@@ -6,7 +6,7 @@
         <% end %>
     </td>
     <td><%= comment.user.name %>：</td>
-    <td><%= comment.body %></td>
+    <td><%= safe_join(comment.body.split("\n"),tag(:br)) %></td>
     <td>(<%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>)</td>
     <td>
       <% if comment.user == current_user || admin_signed_in? %>

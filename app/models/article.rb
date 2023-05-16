@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   # has_and_belongs_to_many :hashtags
 
   belongs_to :user
+  belongs_to :place
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :article_hashtags, dependent: :destroy
@@ -13,19 +14,19 @@ class Article < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 1000 }
 
-  after_save do
-    article = Article.find_by(id: id)
-    hashtags = content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    hashtags.uniq.map do |hashtag|
-      # ハッシュタグは先頭の#を外した上で保存
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
-      article.hashtags << tag
-    end
-  end
+  # after_save do
+  #   article = Article.find_by(id: id)
+  #   hashtags = content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+  #   hashtags.uniq.map do |hashtag|
+  #     # ハッシュタグは先頭の#を外した上で保存
+  #     tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+  #     article.hashtags << tag
+  #   end
+  # end
   #更新アクション
-  before_update do
-    article = Article.find_by(id: id)
-    article.hashtags.clear
+  before_save do
+    article = Article.find_or_initialize_by(id: id)
+    article.hashtags.clear unless article.new_record?
     hashtags = content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))

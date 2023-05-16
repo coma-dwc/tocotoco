@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="d-flex justify-content-start space-between">
+      <div class="d-flex justify-content-start space-between mt-3 mb-5">
         <table>
           <tr><!--プロフィール画像-->
             <td><%= link_to (users_my_page_path(@article.user)) do %>
@@ -30,10 +30,10 @@
       </div>
 
         <!--投稿の画像-->
-        <div class="row">
+        <div class="row justify-content-around mb-5">
           <% if @article.images.present? %>
             <% @article.images.each do |image| %>
-              <%= image_tag image.variant( resize: "150x150" ).processed %>
+              <%= image_tag image.variant( resize: "240x320" ).processed %>
             <% end %>
           <% else %>
 
@@ -43,11 +43,16 @@
 
         <!--投稿記事本文-->
         <div class="row">
-          <div class="col">
-           <!--ハッシュタグ表示欄-->
+          <div class="col mb-3">
+           <!--ハッシュタグを含んだ本文表示欄-->
             <p>
-              <%= render_with_hashtags(@article.content) %>
+              <%= render_with_hashtags(new_line(@article.content)) %>
             </p>
+            <!--ここに都道府県データ表示-->
+            <p>
+              <%= @article.place.prefectures %>
+            </p>
+
           </div>
         </div>
 

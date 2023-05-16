@@ -11,19 +11,31 @@
             <!-- publicログイン時の表示 -->
             <% if user_signed_in? %>
               <ul class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
+                <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+                <i class="fas fa-sign-out"></i> <!--アイコン表示されない-->
+                ログアウト
+                <% end %>
               </ul>
               <ul class="nav-item">
-                <%= link_to "マイページ", users_my_page_path, class:"nav-link" %>
+                <%= link_to users_my_page_path, class:"nav-link" do %>
+                <i class="fas fa-user"></i>
+                マイページ
+                <% end %>
               </ul>
               <!--ゲストユーザーログイン時投稿するボタン非表示-->
               <% if current_user.is_not_guest? %>
               <ul class="nav-item">
-                <%= link_to "投稿する", new_article_path, class:"nav-link" %>
+                <%= link_to new_article_path, class:"nav-link" do %>
+                <i class="far fa-pen-nib"></i> <!--アイコン表示されない-->
+                投稿する
+                <% end %>
               </ul>
               <% end %>
               <ul class="nav-item">
-                <%= link_to "記事一覧", articles_path, class:"nav-link" %>
+                <%= link_to articles_path, class:"nav-link" do %>
+                <i class="far fa-file-alt"></i>
+                記事一覧
+                <% end %>
               </ul>
 
             <!-- admin -->
@@ -45,13 +57,22 @@
               <!-- publicログアウト時の表示 -->
               <% else %>
               <ul class="nav-item">
-                <%= link_to "新規登録", new_user_registration_path, class:"nav-link" %>
+                <%= link_to about_path, class:"nav-link" do %>
+                <i class="fal fa-info-circle"></i> <!--アイコン表示されない-->
+                About
+                <% end %>
               </ul>
               <ul class="nav-item">
-                <%= link_to "ログイン", new_user_session_path, class:"nav-link" %>
+                <%= link_to new_user_registration_path, class:"nav-link" do %>
+                <i class="fas fa-user-plus"></i>
+                新規登録
+                <% end %>
               </ul>
               <ul class="nav-item">
-                <%= link_to "About", about_path, class:"nav-link" %>
+                <%= link_to new_user_session_path, class:"nav-link" do %>
+                <i class="fas fa-sign-in"></i> <!--アイコン表示されない-->
+                ログイン
+                <% end %>
               </ul>
           <% end %>
           </ul>
