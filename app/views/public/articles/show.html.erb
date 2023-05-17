@@ -52,6 +52,47 @@
             <p>
               <%= render_with_hashtags(new_line(@article.content)) %>
             </p>
+
+            <!--ここから下googleマップ表示エリア（地図を表示）-->
+            <div id="map"></div>
+            <style>
+              #map {
+                width: 300px;
+                height: 200px;
+              }
+            </style>
+            <!--googleマップ用の javascript -->
+            <script>
+            function initMap(){
+              // 地図の位置情報(緯度・経度)を取得
+              let mapPosition = {lat: <%= @article.latitude || 0 %> , lng: <%= @article.longitude || 0 %> };
+              let map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: mapPosition
+              });
+              let transitLayer = new google.maps.TransitLayer();
+              transitLayer.setMap(map);
+
+              let contentString = '【住所】<%= @article.address %>';
+              let infowindow = new google.maps.InfoWindow({
+                content: contentString
+              });
+
+              let marker = new google.maps.Marker({
+                position: mapPosition,
+                map: map,
+                title: contentString
+              });
+
+              marker.addListener('click', function(){
+                infowindow.open(map, marker);
+              });
+            }
+            </script>
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+
             <!--ここに都道府県データ表示-->
             <p>
               <i class="fas fa-shoe-prints" style="color: #442309;"></i>

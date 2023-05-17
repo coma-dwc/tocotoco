@@ -2,6 +2,9 @@ class Article < ApplicationRecord
   has_many_attached :images
   # has_and_belongs_to_many :hashtags
 
+  geocoded_by :address
+  after_validation :geocode
+
   belongs_to :user
   belongs_to :place
   has_many :bookmarks, dependent: :destroy

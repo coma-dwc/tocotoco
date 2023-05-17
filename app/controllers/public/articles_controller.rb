@@ -73,7 +73,7 @@ class Public::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :user_id, :place_id, :hashtags, images: [] ) #写真複数投稿　配列形式で記述
+    params.require(:article).permit(:title, :content, :user_id, :place_id, :hashtags, :address,  images: [] ) #写真複数投稿　配列形式で記述
   end
 
   def ensure_correct_user

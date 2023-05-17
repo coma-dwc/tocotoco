@@ -61,3 +61,7 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 
 gem 'ransack'
+
+gem "dotenv-rails"
+
+gem "geocoder"
