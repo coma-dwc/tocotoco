@@ -9,9 +9,9 @@
 
     <form>
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label" data-toggle="tooltip" data-placement="top" title="入力必須項目です">タイトル</label>
+        <label class="col-sm-4 col-form-label">タイトル<small>(必須)</small></label>
         <div class="col-sm-8">
-        <%= f.text_field :title, class: "form-control-file", placeholder: "タイトル" %> <!--ツールチップ表示できない-->
+        <%= f.text_field :title, class: "form-control-file", placeholder: "タイトル", required: 'required' %>
         </div>
       </div>
 
@@ -23,16 +23,16 @@
       </div>
 
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label">本文</label>
+        <label class="col-sm-4 col-form-label">本文<small>(必須)</small></label>
         <div class="col-sm-8">
-        <%= f.text_area :content, class: "form-control-file", placeholder: "ここに本文を記述します（1000文字以内）", rows: 10 %>
+        <%= f.text_area :content, class: "form-control-file", placeholder: "ここに本文を記述します（1000文字以内）", rows: 10, required: 'required' %>
       </div>
       </div>
 
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label">都道府県</label>
+        <label class="col-sm-4 col-form-label">都道府県<small>(必須)</small></label>
         <div class="col-sm-8">
-        <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :prefectures, f.object.place_id),  { include_blank: "--選択してください--" }, class: "form-control" %>
+        <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :prefectures, f.object.place_id),  { include_blank: "--選択してください--" }, class: "form-control", required: 'required' %>
       </div>
       </div>
 
@@ -52,10 +52,3 @@
     </div>
   </div>
 </div>
-
-<!--ツールチップ-->
-<script>
-  $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-  });
-</script>

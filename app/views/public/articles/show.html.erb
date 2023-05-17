@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-start space-evenly mt-3 mb-5">
         <table>
           <tr><!--プロフィール画像-->
-            <td><%= link_to users_my_page_path(@article.user) do %>
+            <td><%= link_to user_path(@article.user) do %>
                 <%= image_tag @article.user.get_profile_image, size: '50x50' %>
                 <% end %>
             </td>

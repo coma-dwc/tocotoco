@@ -1,7 +1,7 @@
   <header class="shadow-sm">
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><span><%= image_tag 'tocotoco_logo.png',size: "100x100" %>︎</span></a>
+        <a class="navbar-brand" href="/"><span><%= image_tag 'tocotoco_logo.svg',size: "100x100" %>︎</span></a>
         <!--ハンバーガーメニュー-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
             <% if user_signed_in? %>
               <ul class="nav-item">
                 <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
-                <i class="fas fa-sign-out"></i> <!--アイコン表示されない-->
+                <i class="fas fa-sign-out-alt"></i> <!--アイコン表示されない-->
                 ログアウト
                 <% end %>
               </ul>
@@ -26,7 +26,7 @@
               <% if current_user.is_not_guest? %>
               <ul class="nav-item">
                 <%= link_to new_article_path, class:"nav-link" do %>
-                <i class="far fa-pen-nib"></i> <!--アイコン表示されない-->
+                <i class="fas fa-pen-nib"></i> <!--アイコン表示されない-->
                 投稿する
                 <% end %>
               </ul>
@@ -58,7 +58,7 @@
               <% else %>
               <ul class="nav-item">
                 <%= link_to about_path, class:"nav-link" do %>
-                <i class="far fa-info-circle"></i> <!--アイコン表示されない-->
+                <i class="fas fa-info-circle"></i>
                 About
                 <% end %>
               </ul>
@@ -70,7 +70,7 @@
               </ul>
               <ul class="nav-item">
                 <%= link_to new_user_session_path, class:"nav-link" do %>
-                <i class="fas fa-sign-in"></i> <!--アイコン表示されない-->
+                <i class="fas fa-sign-in-alt"></i>
                 ログイン
                 <% end %>
               </ul>

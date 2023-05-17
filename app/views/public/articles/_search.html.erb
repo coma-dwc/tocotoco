@@ -1,16 +1,21 @@
 <h5>記事検索</h5>
 <%= search_form_for @q, url: articles_path do |f| %> <!--すべての記事から検索-->
   <!--キーワード検索-->
+  <div class="form-group">
    <%= f.label :title_or_content_cont, "キーワード検索" %>
    <%= f.search_field :title_or_content_cont, class: 'form-control', placeholder: '検索ワード' %>
+   </div>
 
    <!--タグ検索-->
+    <div class="form-group">
    <%= f.label :hashtags_hashname_cont, "ハッシュタグ検索" %>
    <%= f.search_field :hashtags_hashname_cont, class: 'form-control', placeholder: 'タグ検索' %>
+   </div>
 
    <!--都道府県検索-->
    <%#= f.label :places_prefectures_cont, "都道府県検索" %>
    <%#= f.search_field :places_prefectures_cont, class: 'form-control', placeholder: '都道府県検索' %>
-
+   <div class="form-group">
    <%= f.submit '検索', class: 'btn btn-primary' %>
+   </div>
 <% end %>

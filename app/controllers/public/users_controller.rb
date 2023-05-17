@@ -3,8 +3,14 @@ class Public::UsersController < ApplicationController
    before_action :ensure_guest_user, only: [:edit]
 
   def show
+    @user = User.find(params[:id])
+    @articles = @user.articles.order(created_at: :desc).page(params[:page]).per(6)
+  end
+
+  def my_page
     @user = current_user
     @articles = @user.articles.order(created_at: :desc).page(params[:page]).per(6)
+    render :show
   end
 
   def edit

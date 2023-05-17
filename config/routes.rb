@@ -30,10 +30,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resources :users, only: [:edit, :update, :unsubscribe, :destroy]
-    get '/users/my_page' => 'users#show'
+    get '/users/my_page' => 'users#my_page'
     get '/users/unsubscribe' => 'users#unsubscribe'
     delete '/users/delete' => 'users#delete'
+    resources :users, only: [:show, :edit, :update, :unsubscribe, :destroy]
     # resource :bookmarks, only: [:create, :destroy]
     # get '/users/bookmark' => 'users#bookmark'
      get '/tags/:name' => 'articles#tag_articles', as: "tag"

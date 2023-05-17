@@ -5,7 +5,7 @@
 
   <div class="row">
     <% @articles.each do |article| %>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <div class="card h-80 mb-4 shadow-sm">
           <%= link_to article_path(article) do %>
           <% if article.images.attached? %>

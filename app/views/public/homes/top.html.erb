@@ -6,22 +6,22 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <div class="swiper__box">
-            <img src="/assets/top_thumbnail-1.jpg" alt=""><!--青緑-->
+            <%= image_tag 'top_thumbnail-1.jpg' %> <!--青緑-->
           </div>
         </div>
         <div class="swiper-slide">
           <div class="swiper__box">
-            <img src="/assets/top_thumbnail-2.jpg" alt=""> <!--黄色 -->
+           <%= image_tag 'top_thumbnail-2.jpg' %> <!--黄色 -->
           </div>
         </div>
         <div class="swiper-slide">
           <div class="swiper__box">
-            <img src="/assets/top_thumbnail-3.jpg" alt=""> <!--ピンク -->
+            <%= image_tag 'top_thumbnail-3.jpg' %> <!--ピンク -->
           </div>
         </div>
         <div class="swiper-slide">
           <div class="swiper__box">
-            <img src="/assets/top_thumbnail-4.jpg" alt=""> <!--緑青グラデ -->
+            <%= image_tag 'top_thumbnail-4.jpg' %> <!--緑青グラデ -->
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
            <!-- 新着投稿（bootstrapカード）を入れる位置 -->
         <div class="row">
             <% @articles.each do |article| %>
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
               <div class="card h-80 mb-4 shadow-sm">
                   <%= link_to article_path(article) do %>
                   <% if article.images.attached? %>

@@ -9,9 +9,9 @@
 
     <form>
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label">タイトル</label>
+        <label class="col-sm-4 col-form-label">タイトル<small>(必須)</small></label>
         <div class="col-sm-8">
-        <%= f.text_field :title, class: "form-control-file", placeholder: "タイトル" %>
+        <%= f.text_field :title, class: "form-control-file", placeholder: "タイトル", required: 'required' %>
       </div>
       </div>
 
@@ -23,16 +23,16 @@
       </div>
 
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label">本文</label>
+        <label class="col-sm-4 col-form-label">本文<small>(必須)</small></label>
         <div class="col-sm-8">
-        <%= f.text_area :content, class: "form-control-file", placeholder: "ここに本文を記述します", rows: 10 %>
+        <%= f.text_area :content, class: "form-control-file", placeholder: "ここに本文を記述します", rows: 10, required: 'required' %>
       </div>
       </div>
 
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label">都道府県</label>
+        <label class="col-sm-4 col-form-label">都道府県<small>(必須)</small></label>
         <div class="col-sm-8">
-        <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :prefectures, f.object.place_id),  { include_blank: "--選択してください--" }, class: "form-control" %>
+        <%= f.select :place_id, options_from_collection_for_select(Place.all, :id, :prefectures, f.object.place_id),  { include_blank: "--選択してください--" }, class: "form-control", required: 'required' %>
       </div>
       </div>
 
@@ -42,13 +42,6 @@
         <%= f.text_field :address, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
       </div>
       </div>
-
-      <!--<div class="form-group row">-->
-      <!--  <label class="col-sm-4 col-form-label">ハッシュタグ入力欄</label>-->
-      <!--  <div class="col-sm-8">-->
-      <!--  <%#= f.text_area :hashbody, size:"55x3" %>-->
-      <!--  </div>-->
-      <!--  </div>-->
 
       <div class="form-group row justify-content-center">
         <%= f.submit "編集", class: "btn btn-success" %>
