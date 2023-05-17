@@ -1,16 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="d-flex justify-content-start space-between mt-3 mb-5">
+      <div class="d-flex justify-content-start space-evenly mt-3 mb-5">
         <table>
           <tr><!--プロフィール画像-->
-            <td><%= link_to (users_my_page_path(@article.user)) do %>
+            <td><%= link_to users_my_page_path(@article.user) do %>
                 <%= image_tag @article.user.get_profile_image, size: '50x50' %>
                 <% end %>
             </td>
             <td><%= @article.user.name %>：</td>
             <td><%= @article.title %></td><!--投稿タイトル-->
             <td><%= link_to @article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: @article.id) %></td><!--投稿日時タイムスタンプ-->
+            <td>　</td>
 
             <!--ゲストユーザーはブックマーク、編集、削除ボタンを非表示-->
             <% if current_user && current_user.name != "guestuser" %>
@@ -21,8 +22,11 @@
             </td>
 
             <% if @article.user == current_user %>
-            <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td><!--Editボタン-->
-            <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td><!--Destroyボタン-->
+            <tr>
+              <td></td>
+              <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td><!--Editボタン-->
+              <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td><!--Destroyボタン-->
+            </tr>
             <% end %>
             <% end %>
           </tr>
@@ -60,7 +64,7 @@
         <!--コメント入力欄-->
         <div class="row">
           <div class="col">
-            <h6>コメント一覧</h6>
+            <h6><i class="fas fa-comments" style="color: #4e5c73;"></i>コメント一覧</h6>
             <div id="article-comments">
             <%= render partial: "public/comments/comment", locals: {article: @article} %>
             </div>

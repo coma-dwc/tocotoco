@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row mb-3">
-    <div class="col">
-      <h4>ログイン</h4>
+  <div class="row mb-3 my-3">
+    <div class="col-mb-4">
+      <h4 class="heading">ログイン</h4>
     </div>
   </div>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,7 +15,9 @@
     </div>
     <div class="row mb-3">
       <%= f.submit "ログイン", class:"col-md-2 offset-md-2 btn btn-primary" %>
-      <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class:"col-md-2 offset-md-1 btn btn-secondary" %>
+      <%= link_to users_guest_sign_in_path, method: :post, class:"col-md-2 offset-md-1 btn btn-secondary" do %>
+        ゲストログイン<br>（閲覧用）<br>
+      <% end %>
     </div>
     <% if devise_mapping.rememberable? %>
       <div class="row">
@@ -35,9 +37,9 @@
 
 
 <div class="container">
-  <div class="row mb-3">
-    <div class="col">
-      <h4>新規ユーザー登録</h4>
+  <div class="row mb-3 my-5">
+    <div class="col-mb-4">
+      <h4 class="heading">新規ユーザー登録</h4>
     </div>
   </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

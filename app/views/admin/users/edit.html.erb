@@ -9,15 +9,15 @@
           </tr>
           <tr>
            <td>プロフィール画像</td>
-           <td><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></td>
+           <td><%= image_tag @user.get_profile_image, size: '80x80' %></td>
           </tr>
           <tr>
            <td>ニックネーム</td>
-           <td><%= f.text_field :name %></td>
+           <td><%= @user.name %></td>
           </tr>
           <tr>
            <td>メールアドレス</td>
-           <td><%= f.text_field :email %></td>
+           <td><%= @user.email %></td>
           </tr>
           <tr>
             <td>ユーザーステータス</td>

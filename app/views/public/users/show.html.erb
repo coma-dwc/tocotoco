@@ -24,7 +24,7 @@
             </td>
           </tr>
           <tr>
-            <td><%= link_to todos_path(@user.id), class: "btn btn-outline-info" do %>
+            <td><%= link_to todos_path, class: "btn btn-outline-info" do %>
             <i class="fas fa-list"></i>
             Todoリスト
             <% end %>
@@ -36,7 +36,8 @@
 
     </div>
     <div class="col">
-      <table class="table table-borderless">
+      <div class="table-responsive-md">
+        <table class="table-borderless">
         <tbody>
           <tr>
             <td><%= image_tag @user.get_profile_image, size: '80x80' %></td>
@@ -47,10 +48,11 @@
           </tr>
           <tr>
             <td colspan="2">自己紹介文</td>
-            <td><%= @user.introduction %></td>
+            <td><%= @user.introduction %></td>　<!-- %= safe_join(@user.introduction.split("\n"),tag(:br)) %> -->
           </tr>
         </tbody>
-      </table>
+        </table>
+      </div>
     </div>
   </div>
 </div>

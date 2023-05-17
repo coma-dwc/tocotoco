@@ -1,0 +1,9 @@
+// 見出しの装飾
+.heading {
+  padding: 0 2em 20px;
+  font-size: 26px;
+  background-image: repeating-linear-gradient(-45deg, #e5c046 0px, #e5c046 2px, rgba(0 0 0 / 0) 0%, rgba(0 0 0 / 0) 50%);
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+  background-position: center bottom;
+}

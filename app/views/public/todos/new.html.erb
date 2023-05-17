@@ -1,6 +1,25 @@
-<h4>タスク追加</h4>
-<%= form_for(@todo) do |f| %>
-  <div><%= f.text_field :task %></div>
-  <div><input type="submit" value="追加" class="btn btn-success"></div>
-<% end %>
-<%= link_to '戻る', todos_path %>
+<div class="container">
+  <div class="row justify-content-center mt-3">
+    <h4 class="heading col-md-4 mt-3 text-center">タスク追加</h4>
+  </div>
+
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-4">
+        <%= form_for(@todo) do |f| %>
+          <div class="form-row">
+            <div class="col-8">
+              <%= f.text_field :task, class: "form-control" %>
+            </div>
+            <div class="col-4">
+              <%= f.submit "追加", class: "btn btn-success" %>
+            </div>
+              <% end %>
+          </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center my-5">
+      <%= link_to todos_path, class: "col-md-3 btn btn-dark" do %>
+      <i class="fas fa-chevron-left" style="color: #ffffff;"></i> タスク一覧に戻る
+      <% end %>
+    </div>
