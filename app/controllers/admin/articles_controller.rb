@@ -1,18 +1,6 @@
 class Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
-  # def new
-  #   @article = Article.new
-  # end
-
-  # def create
-  #   @article = Article.new(article_params)
-  #   if @article.save!
-  #     redirect_to admin_article_path(@article.id)
-  #   else
-  #     render :new
-  #   end
-  # end
 
   def index
     @articles = Article.all.order(created_at: :desc).page(params[:page]).per(12)
@@ -21,19 +9,6 @@ class Admin::ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
   end
-
-  # def edit
-  #   @article = Article.find(params[:id])
-  # end
-
-  # def update
-  #   @article = Article.find(params[:id])
-  #   if @article.update(article_params)
-  #     redirect_to admin_article_path(@article.id)
-  #   else
-  #     render :edit
-  #   end
-  # end
 
   def destroy
     @article = Article.find(params[:id])

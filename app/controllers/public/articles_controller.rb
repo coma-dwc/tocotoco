@@ -10,7 +10,6 @@ class Public::ArticlesController < ApplicationController
   def create
      @article = Article.new(article_params)
      @article.user_id = current_user.id
-    # @articles.place_id = @place.id #要確認
     if @article.save
       redirect_to article_path(@article.id)
     else
@@ -33,7 +32,6 @@ class Public::ArticlesController < ApplicationController
   end
 
   def index
-    # @articles = Article.all.page(params[:page]).per(12)
     @q = Article.ransack(params[:q])
     @articles = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(12)
   end

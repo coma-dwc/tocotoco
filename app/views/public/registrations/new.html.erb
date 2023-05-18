@@ -1,8 +1,7 @@
-<div class="container"></div>
+<%= flash[:alert] %>
+<div class="container">
   <div class="row mb-3">
-    <div class="col">
-      <h4>新規ユーザー登録</h4>
-    </div>
+      <h4 class="heading col-lg-auto text-center my-3">新規ユーザー登録</h4>
   </div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
@@ -21,7 +20,7 @@
     <%= f.label "パスワード", class:"col-md-2 offset-md-1" %>
     <% if @minimum_password_length %>
     <%= f.password_field :password, class:"col-md-2 form-control", autocomplete: "new-password" %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以内)</em>
     <% end %>
 
   </div>
@@ -35,5 +34,4 @@
     <%= f.submit "新規登録", class:"col-md-2 offset-md-2 btn btn-success" %>
   </div>
 <% end %>
-
-<%#= render "public/shared/links" %>
+</div>
