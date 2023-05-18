@@ -16,7 +16,7 @@
         <% @places.each do |place| %>
         <tr>
           <td><%= place.prefectures %></td>
-          <td><%= link_to "編集する", admin_place_path(place), class:"btn btn-success" %></td>
+          <td><%= link_to "編集する", edit_admin_place_path(place), class:"btn btn-success" %></td>
         </tr>
         <% end %>
       </table>

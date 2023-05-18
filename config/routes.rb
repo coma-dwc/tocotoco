@@ -34,8 +34,6 @@ Rails.application.routes.draw do
     get '/users/unsubscribe' => 'users#unsubscribe'
     delete '/users/delete' => 'users#delete'
     resources :users, only: [:show, :edit, :update, :unsubscribe, :destroy]
-    # resource :bookmarks, only: [:create, :destroy]
-    # get '/users/bookmark' => 'users#bookmark'
      get '/tags/:name' => 'articles#tag_articles', as: "tag"
     resources :articles do
       resource :bookmarks, only: [:create, :destroy]
