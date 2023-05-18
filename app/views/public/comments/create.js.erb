@@ -1,0 +1,2 @@
+$('#article-comments').html("<%= j(render "/public/comments/comment", article: @article, current_user: @user) %>");
+$("textarea").val('');

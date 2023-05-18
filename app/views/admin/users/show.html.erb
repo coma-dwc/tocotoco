@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <h4 class="col-lg-auto text-center">ユーザー詳細画面</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= image_tag @user.get_profile_image, size: '50x50' %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "ユーザーステータス編集",  edit_admin_user_path(@user.id), class: "btn btn-success" %><!-- Editボタン --></td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td colspan="2">ニックネーム</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td colspan="2">自己紹介文</td>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td colspan="2">会員ステータス</td>
+            <% if @user.is_deleted == true %>
+            <td class="text-danger">退会済</td>
+            <% else %>
+            <td class="text-success">有効</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+<!--admin側一覧ビュー簡易表示-->
+  <div class="container">
+  <div class="row my-3">
+    <h4 class="col-lg-auto bg-light text-center">記事一覧(全<%=@articles.count %>件)</h4>
+  </div>
+
+  <div class="row justify-content-lg-center">
+    <table class="table table-borderless table-hover table-inverse border-top border-bottom">
+      <thead class="thead-light">
+        <tr>
+          <th>記事ID</th>
+          <th>タイトル</th>
+          <th>ユーザーネーム</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @articles.each do |article| %>
+                <tr>
+                  <td><%= article.id %></td>
+                  <td><%= link_to article_path(article) do %>
+                  <%= article.title %>
+                  <% end %>
+                  </td>
+                  <td><%= article.user.name %></td>
+            <% end %>
+        </tbody>
+    </table>
+      <div class="row justify-content-lg-center">
+        <%= paginate @articles %>
+      </div>
+  </div>
+</div>

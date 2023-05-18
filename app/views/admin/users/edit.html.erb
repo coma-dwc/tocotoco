@@ -1,0 +1,38 @@
+<%= form_with model: @user, url: admin_user_path(@user.id) do |f| %>
+   <div class="container">
+     <div class="row">
+        <h4 class="bg-light"><%= @user.name %>さんの会員情報編集</h4>
+         <table class="table table-borderless">
+          <tr>
+           <td>ユーザーID</td>
+           <td><%= @user.id %></td>
+          </tr>
+          <tr>
+           <td>プロフィール画像</td>
+           <td><%= image_tag @user.get_profile_image, size: '80x80' %></td>
+          </tr>
+          <tr>
+           <td>ニックネーム</td>
+           <td><%= @user.name %></td>
+          </tr>
+          <tr>
+           <td>メールアドレス</td>
+           <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>ユーザーステータス</td>
+            <td>
+        　     <%= f.radio_button :is_deleted, false %>
+        　     <%= f.label :is_deleted, "有効"%>
+        　     <%= f.radio_button :is_deleted, true %>
+        　     <%= f.label :is_deleted, "退会" %>
+            </td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><%= f.submit '変更を保存', class: "btn btn-success" %></td>
+           </tr>
+          </table>
+      </div>
+    </div>
+    <% end %>

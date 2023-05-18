@@ -1,0 +1,77 @@
+<h1>admin/articles#showページ</h1>
+<h2>adminの管理者記事詳細画面</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-start space-between">
+        <table>
+          <tr>
+            <td><!--プロフィール画像-->
+              <%= link_to (@article.user) do %>
+              <%= image_tag @article.user.get_profile_image, size: '50x50' %>
+              <% end %>
+              </td>
+            <td><%= @article.title %></td><!--投稿タイトル-->
+            <td><%= link_to @article.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_article_path(id: @article.id) %></td><!--投稿日時タイムスタンプ-->
+
+            <% if @article.user == current_user %>
+            <td><%= link_to 'Edit', edit_admin_article_path(@article), class: "btn btn-sm btn-success" %></td><!--Editボタン-->
+            <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td><!--Destroyボタン-->
+            <% end %>
+          </tr>
+        </table>
+
+        <!--投稿の画像-->
+        <div class="row">
+          <% if @article.images.present? %>
+            <% @article.images.each do |image| %>
+              <%= image_tag image, class: "no_image", size: "200x200" %>
+            <% end %>
+          <% else %>
+            画像はありません
+          <% end %>
+        <!--ここまで-->
+
+
+        <!-- 画像を表示する場所 -->
+        <!--<div class="row">-->
+        <!--  <%# if @article.image.attached? %>-->
+        <!--    <%# @article.image.each do |image| %>-->
+        <!--      <%#= image_tag image.variant(resize: '200x200') %>-->
+        <!--    <%# end %>-->
+        <!--  <%# end %>-->
+        <!--</div>-->
+          <!-- ここまで -->
+
+
+        <!--投稿記事本文-->
+        <div class="row">
+          <div class="col">
+          <p><%#= @article.content %></p>
+            <!--<#% @article.hashtags.each do |tag| %>-->
+            <!--<p>-->
+            <!--  <%#= tag.hashname %>-->
+            <!--</p> <!--ハッシュタグ表示欄--> <!--ハッシュタグ機能を作成してからコメントアウト外す-->
+            <!--<#% end %>-->
+          </div>
+        </div>
+
+        <!--コメント入力欄-->
+        <div class="row">
+          <div class="col">
+            <div id="article-comments">
+            <%= render partial: "admin/comments/comment", locals: {article: @article} %>
+            </div>
+
+            <div id ="form">
+              <%= render partial: "admin/comments/form", locals: {article: @article, comment: @comment} %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

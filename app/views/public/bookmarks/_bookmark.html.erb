@@ -1,0 +1,9 @@
+ <% if article.bookmarked_by?(current_user) %>
+   <%= link_to article_bookmarks_path(article), method: :delete, remote: true do %>
+    <i class="fas fa-bookmark" style="color: #fa8500;"></i>
+    <% end %>
+ <% else %>
+   <%= link_to article_bookmarks_path(article), method: :post, remote: true do %>
+   <i class="far fa-bookmark" style="color: #ffc800;"></i>
+   <% end %>
+ <% end %>

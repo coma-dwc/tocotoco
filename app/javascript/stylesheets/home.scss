@@ -1,0 +1,25 @@
+// カードの高さを揃える
+.card {
+  height: 100%;
+}
+
+// aboutページの写真の装飾
+.about-page-img {
+  box-shadow: 15px 15px 0 #ea987e;
+}
+
+// 見出しの装飾
+.heading {
+  padding: 0 2em 20px;
+  font-size: 26px;
+  background-image: repeating-linear-gradient(-45deg, #e5c046 0px, #e5c046 2px, rgba(0 0 0 / 0) 0%, rgba(0 0 0 / 0) 50%);
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+  background-position: center bottom;
+}
+
+
+// .container {
+//   background-color: #dae9db;
+//   border-radius: 10px;
+// }

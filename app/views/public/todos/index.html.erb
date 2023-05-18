@@ -1,0 +1,37 @@
+<div class="container my-3">
+  <div class="row">
+    <h1 class="heading col-lg-auto mt-3 text-center">Todo list</h1>
+  </div>
+
+
+<h2><%= link_to 'タスクを追加', new_todo_path ,class: 'btn btn-info'%></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>タスク名</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @todos.each do |todo| %>
+    <tr>
+      <td><%= todo.task %></td>
+        <td><%= link_to edit_todo_path(todo) ,class: 'btn btn-success' do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+        </td>
+        <td><%= link_to todo_path(todo), method: :delete, class: 'btn btn-danger' do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+        </td>
+    </tr>
+    <% end %>
+  <tbody>
+</table>
+  <div class="row justify-content-center my-5">
+      <%= link_to users_my_page_path, class: "col-md-3 btn btn-dark" do %>
+      <i class="fas fa-chevron-left" style="color: #ffffff;"></i> マイページに戻る
+      <% end %>
+  </div>
+</div>

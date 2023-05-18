@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-start space-evenly mt-3 mb-5">
+        <table>
+          <tr><!--プロフィール画像-->
+            <td><%= link_to user_path(@article.user) do %>
+                <%= image_tag @article.user.get_profile_image, size: '50x50' %>
+                <% end %>
+            </td>
+            <td><%= @article.user.name %>：</td>
+            <td><%= @article.title %></td><!--投稿タイトル-->
+            <td><%= link_to @article.created_at.strftime('%Y/%m/%d %H:%M:%S'), article_path(id: @article.id) %></td><!--投稿日時タイムスタンプ-->
+            <td>　</td>
+
+            <!--ゲストユーザーはブックマーク、編集、削除ボタンを非表示-->
+            <% if current_user && current_user.name != "guestuser" %>
+            <td><!--ブックマーク-->
+            <div id="bookmark_button_<%= @article.id %>">
+              <%= render 'public/bookmarks/bookmark', article: @article, current_user: current_user %>
+            </div>
+            </td>
+
+            <% if @article.user == current_user %>
+            <tr>
+              <td></td>
+              <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td><!--Editボタン-->
+              <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td><!--Destroyボタン-->
+            </tr>
+            <% end %>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+
+        <!--投稿の画像-->
+        <div class="row justify-content-around mb-5">
+          <% if @article.images.present? %>
+            <% @article.images.each do |image| %>
+              <%= image_tag image.variant( resize: "240x320" ).processed %>
+            <% end %>
+          <% else %>
+
+          <% end %>
+        </div>
+
+
+        <!--投稿記事本文-->
+        <div class="row">
+          <div class="col mb-3">
+           <!--ハッシュタグを含んだ本文表示欄-->
+            <p>
+              <%= render_with_hashtags(new_line(@article.content)) %>
+            </p>
+
+            <!--ここから下googleマップ表示エリア（地図を表示）-->
+            <div id="map"></div>
+            <style>
+              #map {
+                width: 300px;
+                height: 200px;
+              }
+            </style>
+            <!--googleマップ用の javascript -->
+            <script>
+            function initMap(){
+              // 地図の位置情報(緯度・経度)を取得
+              let mapPosition = {lat: <%= @article.latitude || 0 %> , lng: <%= @article.longitude || 0 %> };
+              let map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: mapPosition
+              });
+              let transitLayer = new google.maps.TransitLayer();
+              transitLayer.setMap(map);
+
+              let contentString = '【住所】<%= @article.address %>';
+              let infowindow = new google.maps.InfoWindow({
+                content: contentString
+              });
+
+              let marker = new google.maps.Marker({
+                position: mapPosition,
+                map: map,
+                title: contentString
+              });
+
+              marker.addListener('click', function(){
+                infowindow.open(map, marker);
+              });
+            }
+            </script>
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+
+            <!--ここに都道府県データ表示-->
+            <p>
+              <i class="fas fa-shoe-prints" style="color: #442309;"></i>
+              行った場所：<%= @article.place.prefectures %>
+            </p>
+
+          </div>
+        </div>
+
+        <!--コメント入力欄-->
+        <div class="row">
+          <div class="col">
+            <h6><i class="fas fa-comments" style="color: #4e5c73;"></i>コメント一覧</h6>
+            <div id="article-comments">
+            <%= render partial: "public/comments/comment", locals: {article: @article} %>
+            </div>
+
+            <!--ゲストユーザーはコメント入力欄を非表示-->
+            <% if current_user && current_user.name != "guestuser" %>
+            <div id ="form">
+              <%= render partial: "public/comments/form", locals: {article: @article, comment: @comment} %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>

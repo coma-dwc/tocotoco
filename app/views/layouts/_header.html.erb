@@ -1,0 +1,82 @@
+  <header class="shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><span><%= image_tag 'tocotoco_logo.svg',size: "100x100" %>︎</span></a>
+        <!--ハンバーガーメニュー-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+            <!-- publicログイン時の表示 -->
+            <% if user_signed_in? %>
+              <ul class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+                <i class="fas fa-sign-out-alt"></i> <!--アイコン表示されない-->
+                ログアウト
+                <% end %>
+              </ul>
+              <ul class="nav-item">
+                <%= link_to users_my_page_path, class:"nav-link" do %>
+                <i class="fas fa-user"></i>
+                マイページ
+                <% end %>
+              </ul>
+              <!--ゲストユーザーログイン時投稿するボタン非表示-->
+              <% if current_user.is_not_guest? %>
+              <ul class="nav-item">
+                <%= link_to new_article_path, class:"nav-link" do %>
+                <i class="fas fa-pen-nib"></i> <!--アイコン表示されない-->
+                投稿する
+                <% end %>
+              </ul>
+              <% end %>
+              <ul class="nav-item">
+                <%= link_to articles_path, class:"nav-link" do %>
+                <i class="far fa-file-alt"></i>
+                記事一覧
+                <% end %>
+              </ul>
+
+            <!-- admin -->
+             <% elsif admin_signed_in? %>
+              <ul class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, class:"nav-link", method: :delete, class:"nav-link" %>
+              </ul>
+              <ul class="nav-item">
+                <%= link_to "ユーザー一覧", admin_root_path, class:"nav-link" %>
+              </ul>
+              <ul class="nav-item">
+                <%= link_to "記事一覧", admin_articles_path, class:"nav-link" %>
+              </ul>
+              <ul class="nav-item">
+                <%= link_to "都道府県データ一覧", admin_places_path, class:"nav-link" %>
+              </ul>
+
+
+              <!-- publicログアウト時の表示 -->
+              <% else %>
+              <ul class="nav-item">
+                <%= link_to about_path, class:"nav-link" do %>
+                <i class="fas fa-info-circle"></i>
+                About
+                <% end %>
+              </ul>
+              <ul class="nav-item">
+                <%= link_to new_user_registration_path, class:"nav-link" do %>
+                <i class="fas fa-user-plus"></i>
+                新規登録
+                <% end %>
+              </ul>
+              <ul class="nav-item">
+                <%= link_to new_user_session_path, class:"nav-link" do %>
+                <i class="fas fa-sign-in-alt"></i>
+                ログイン
+                <% end %>
+              </ul>
+          <% end %>
+          </ul>
+          </div>
+      </div>
+    </nav>
+  </header>
