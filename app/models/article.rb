@@ -27,7 +27,7 @@ class Article < ApplicationRecord
   #   end
   # end
   #更新アクション
-  before_save do
+  after_save do
     article = Article.find_or_initialize_by(id: id)
     article.hashtags.clear unless article.new_record?
     hashtags = content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
