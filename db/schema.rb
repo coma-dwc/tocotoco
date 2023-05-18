@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2023_05_17_102449) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "article_hashtags", id: false, force: :cascade do |t|
+  create_table "article_hashtags", force: :cascade do |t|
     t.integer "article_id"
     t.integer "hashtag_id"
     t.datetime "created_at", precision: 6, null: false
