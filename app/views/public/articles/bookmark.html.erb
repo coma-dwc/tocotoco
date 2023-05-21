@@ -3,37 +3,47 @@
     <h4 class="heading col-lg-auto text-center">ブックマーク一覧</h4>
   </div>
 
-  <div class="row">
      <div>
        <h5 class="col-lg-auto text-center">ブックマーク一覧(全<%=@bookmarks.count %>件)</h5>
      </div>
-     <div class="container">
+
      <div class="row">
        <% @bookmarks.each do |bookmark| %>
        <div class="col-md-4 mb-3">
+         <div class="card h-80 mb-4 shadow-sm">
            <%= link_to article_path(bookmark.article.id) do %>
-           <div class="card mb-4 shadow-sm">
-             <div class="card-img-top">
              <% if bookmark.article.images.attached? %>
              <% bookmark.article.images.each do |image| %>
-               <%= image_tag image.variant( resize: "150x150" ).processed %>
              <% end %>
-
+               <%= image_tag bookmark.article.images.first.variant( resize: "" ).processed, class: "card-img-to", style: "width: 100%; height: 180px; object-fit: cover;"  %>
              <% else %>
-               <%= image_tag "no_image.jpg" %>
+               <%= image_tag "no_image.jpg" ,style: "width: 100%; height: 180px; object-fit: cover;"  %>
               <% end %>
            <% end %>
-           </div>
            <div class="card-body">
-             <p class="article-details card-text"><%= bookmark.article.content.truncate(15) %></p>
+             <p class="card-title"><strong><%= bookmark.article.title %></strong></p>
+             <p class="card-text"><%= link_to user_path(bookmark.article.user) do %>
+               <%= image_tag bookmark.article.user.get_profile_image, size: '20x20' %>
+               <% end %>
+               <%= bookmark.article.user.name %></p>
+             <p class="card-text"><%= bookmark.article.content.truncate(30) %></p>
+
+             <!--ハッシュタグ表示-->
+             <div class="mt-3">
+               <% bookmark.article.article_hashtags.each do |article_hashtag| %>
+               <i class="fas fa-tag"></i>
+               <%= link_to article_hashtag.hashtag.hashname, tag_path(name: article_hashtag.hashtag.hashname) %>
+               <% end %>
+             </div>
+
+              <p class="card-text"><%= bookmark.article.created_at.strftime('%Y/%m/%d %H:%M') %></p>
            </div>
          </div>
        </div>
        <% end %>
      </div>
-     </div>
+
      <div class="row justify-content-lg-center">
        <%= paginate @bookmarks %>
      </div>
-   </div>
 </div>

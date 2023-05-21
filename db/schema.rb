@@ -139,8 +139,6 @@ ActiveRecord::Schema.define(version: 2023_05_17_102449) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "article_hashtags", "articles"
-  add_foreign_key "article_hashtags", "hashtags"
   add_foreign_key "articles", "hashtags"
   add_foreign_key "bookmarks", "articles"
   add_foreign_key "bookmarks", "users"
