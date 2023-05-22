@@ -4,7 +4,7 @@
       <div class="justify-content-start mt-3 mb-5">
         <table>
           <tr><!--プロフィール画像-->
-            <td><%= link_to user_path(@article.user) do %>
+            <td><%= link_to controller: 'public/users', action: 'show', id: @article.user_id do %>
                 <%= image_tag @article.user.get_profile_image, size: '50x50' %>
                 <% end %>
             </td>

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
      if resource_or_scope.is_a?(Admin)
         admin_root_path #adminのサインイン後の遷移先
      else
-         users_my_page_path #publicのサインイン後の遷移先
+         user_my_page_path #publicのサインイン後の遷移先
      end
   end
 

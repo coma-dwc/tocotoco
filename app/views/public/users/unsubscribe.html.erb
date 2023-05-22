@@ -7,7 +7,7 @@
 
     <div class="row mt-5">
       <div class="mx-auto">
-        <%= link_to "退会しない", users_my_page_path, class: "btn btn-outline-info" %>&emsp;&emsp;
+        <%= link_to "退会しない", user_my_page_path, class: "btn btn-outline-info" %>&emsp;&emsp;
         <%= link_to "退会する", user_path(@user.id), method: :delete, data: { confilm: "本当に退会しますか？"},class: "btn btn-outline-danger" %>
       </div>
     </div>

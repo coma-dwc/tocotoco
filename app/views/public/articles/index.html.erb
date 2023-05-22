@@ -26,7 +26,7 @@
            <% end %>
            <div class="card-body">
                <p class="card-title"><strong><%= article.title %></strong></p>
-               <p class="card-text"><%= link_to user_path(article.user) do %>
+               <p class="card-text"><%= link_to controller: 'public/users', action: 'show', id: article.user_id do %>
                  <%= image_tag article.user.get_profile_image, size: '20x20' %>
                  <% end %>
                  <%= article.user.name %></p>

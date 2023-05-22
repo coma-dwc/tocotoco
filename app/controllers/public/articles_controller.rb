@@ -1,7 +1,7 @@
 class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :tag_articles]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :ensure_guest_user, except: [:show, :index]
+  before_action :ensure_guest_user, except: [:show, :index, :tag_articles]
 
   def new
     @article = Article.new
@@ -62,8 +62,8 @@ class Public::ArticlesController < ApplicationController
   end
 
   def bookmark
-  @bookmarks = Bookmark.where(user_id: current_user.id)
-  @bookmarks = @bookmarks.page(params[:page]).per(12)
+    @bookmarks = Bookmark.where(user_id: current_user.id)
+    @bookmarks = @bookmarks.page(params[:page]).per(12)
   end
 
 
@@ -82,7 +82,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def ensure_guest_user
-  redirect_to root_path unless current_user && current_user.is_not_guest?
+    redirect_to root_path unless current_user && current_user.is_not_guest?
   end
 
 

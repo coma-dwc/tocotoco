@@ -32,15 +32,15 @@
 
 ### 主な利用シーン
 
-フラッと散歩や旅行に行く時、自分が出かけて勧めたいマイナースポットを投稿する時
+フラッと散歩や旅行に行く時、自分が出かけて勧めたいマイナースポットや情報を投稿する時
 
 
 
 ## 設計書
 
-テーブル定義書()
-アプリケーション詳細設計()
-ER図()
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1F860Gat4eXF3elsR5LEAhWnZm-dTVWGoaf3sarpqB00/edit?usp=sharing)
+[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/16srDB3yXTKFbV4GBBAR8mJPBs1fD-bgyxVF57f1Du_I/edit?usp=sharing)
+[ER図](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1yLM3WNfOl4aEdo-7xzRKNKDekkNptI1i)
 
 
 
@@ -63,4 +63,5 @@ ER図()
 
 - 画像：[写真AC](https://www.photo-ac.com/)
 - 　　　[デザインAC](https://www.design-ac.net/)
+- 　　　[イラストAC](https://www.ac-illust.com/)
 

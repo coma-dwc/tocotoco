@@ -84,6 +84,10 @@
                   <% end %>
                   <% end %>
                 <div class="card-body">
+                  <p class="card-text"><%= link_to controller: 'public/users', action: 'show', id: article.user_id do %>
+                  <%= image_tag article.user.get_profile_image, size: '20x20' %>
+                  <% end %>
+                  <%= article.user.name %></p>
                   <p class="card-title"><strong><%= article.title %></strong></p>
                   <p class="card-text"><%= article.content.truncate(30) %></p>
                   <!--ハッシュタグ表示-->

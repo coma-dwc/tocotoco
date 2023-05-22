@@ -22,7 +22,7 @@
            <% end %>
            <div class="card-body">
              <p class="card-title"><strong><%= bookmark.article.title %></strong></p>
-             <p class="card-text"><%= link_to user_path(bookmark.article.user) do %>
+             <p class="card-text"><%= link_to controller: 'public/users', action: 'show', id: bookmark.article.user_id do %>
                <%= image_tag bookmark.article.user.get_profile_image, size: '20x20' %>
                <% end %>
                <%= bookmark.article.user.name %></p>
@@ -48,7 +48,7 @@
      </div>
 
      <div class="row justify-content-center my-5">
-      <%= link_to users_my_page_path, class: "col-md-3 btn btn-dark" do %>
+      <%= link_to user_my_page_path, class: "col-md-3 btn btn-dark" do %>
       <i class="fas fa-chevron-left" style="color: #ffffff;"></i> マイページに戻る
       <% end %>
   </div>
