@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <div class="container my-3" style="background-color: #fffacd; border-radius: 10px;">
   <div class="row">
     <h4 class="heading col-lg-auto mt-3 text-center">マイページ</h4>
@@ -8,7 +9,7 @@
       <table class="table table-borderless">
         <tbody>
           <!--ゲストユーザーは編集、ブックマーク一覧、Todoリストのボタンを非表示-->
-          <% if @user.is_not_guest? %>
+          <% if @user.is_not_guest? && @user.id == current_user.id %>
           <tr>
             <td><%= link_to edit_user_path(@user.id), class: "btn btn-outline-success" do %>
             <i class="fas fa-user-cog"></i>

@@ -8,26 +8,25 @@
 
   <div class="row mb-3">
     <%= f.label "ユーザーネーム", class:"col-md-2 offset-md-1" %><br />
-    <%= f.text_field :name, autofocus: true, placeholder: "username", class:"col-md-2 form-control" %>
+    <%= f.text_field :name, autofocus: true, placeholder: "username", class:"col-md-2 form-control", required: 'required' %>
   </div>
 
   <div class="row mb-3">
     <%= f.label "メールアドレス", class:"col-md-2 offset-md-1" %><br />
-    <%= f.email_field :email, placeholder: "example@email.com", class:"col-md-3 form-control" %>
+    <%= f.email_field :email, placeholder: "example@email.com", class:"col-md-3 form-control", required: 'required' %>
   </div>
 
   <div class="row mb-3">
     <%= f.label "パスワード", class:"col-md-2 offset-md-1" %>
     <% if @minimum_password_length %>
-    <%= f.password_field :password, class:"col-md-2 form-control", autocomplete: "new-password" %>
+    <%= f.password_field :password, class:"col-md-2 form-control", autocomplete: "new-password", required: 'required' %>
     <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %>
-
   </div>
 
   <div class="row mb-3">
     <%= f.label "パスワード確認用", class:"col-md-2 offset-md-1" %><br />
-    <%= f.password_field :password_confirmation, class:"col-md-2 form-control", autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, class:"col-md-2 form-control", autocomplete: "new-password", required: 'required' %>
   </div>
 
   <div class="row mb-3">

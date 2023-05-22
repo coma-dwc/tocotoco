@@ -7,11 +7,11 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="row mb-3">
       <%= f.label "メールアドレス", class:"col-md-2 offset-md-1" %>
-      <%= f.email_field :email, autofocus: true, class:"col-md-3 form-control" %>
+      <%= f.email_field :email, autofocus: true, class:"col-md-3 form-control", required: 'required' %>
     </div>
     <div class="row mb-3">
       <%= f.label "パスワード", class:"col-md-2 offset-md-1" %>
-      <%= f.password_field :password, class:"col-md-3 form-control" %>
+      <%= f.password_field :password, class:"col-md-3 form-control", required: 'required' %>
     </div>
     <div class="row mb-3">
       <%= f.submit "ログイン", class:"col-md-2 offset-md-2 btn btn-primary" %>
@@ -38,28 +38,9 @@
       <h4 class="heading">新規ユーザー登録</h4>
     </div>
   </div>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <div class="row mb-3">
-      <%= f.label "ユーザーネーム", class:"col-md-2 offset-md-1" %>
-      <%= f.text_field :name, autofocus: true, placeholder: "username", class:"col-md-2 form-control" %>
-    </div>
-    <div class="row mb-3">
-      <%= f.label "メールアドレス", class:"col-md-2 offset-md-1" %>
-      <%= f.email_field :email, placeholder: "example@email.com", class:"col-md-3 form-control" %>
-    </div>
-    <div class="row mb-3">
-      <%= f.label "パスワード", class:"col-md-2 offset-md-1" %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
-      <%= f.password_field :password, class:"col-md-2 form-control" %>
-    </div>
-    <div class="row mb-3">
-      <%= f.label "パスワード確認用", class:"col-md-2 offset-md-1" %>
-      <%= f.password_field :password_confirmation, class:"col-md-2 form-control" %>
-    </div>
-    <div class="row mb-3">
-      <%= f.submit "新規登録", class:"col-md-2 offset-md-2 btn btn-success" %>
-    </div>
-  <% end %>
+  <div class="row">
+    <p>ユーザー登録がお済みでない方は
+    <%= link_to "こちら", new_user_registration_path %></p>
+  </div>
+
 </div>
