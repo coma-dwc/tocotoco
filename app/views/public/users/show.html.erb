@@ -9,7 +9,7 @@
       <table class="table table-borderless">
         <tbody>
           <!--ゲストユーザーは編集、ブックマーク一覧、Todoリストのボタンを非表示-->
-          <% if @user.is_not_guest? && @user.id == current_user.id %>
+          <% if user_signed_in? && @user.is_not_guest? && @user.id == current_user.id %>
           <tr>
             <td><%= link_to edit_user_path, class: "btn btn-outline-success" do %>
             <i class="fas fa-user-cog"></i>

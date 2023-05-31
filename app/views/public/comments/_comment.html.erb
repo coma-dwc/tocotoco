@@ -1,7 +1,7 @@
 <table class="table">
 <% article.comments.each do |comment| %>
   <tr>
-    <td><%= link_to (comment.user) do %>
+    <td><%= link_to controller: 'public/users', action: 'show', id: comment.user_id do %>
           <%= image_tag comment.user.get_profile_image, size: '50x50' %>
         <% end %>
     </td>
