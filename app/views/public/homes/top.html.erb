@@ -12,12 +12,16 @@
         </div>
         <div class="swiper-slide">
           <div class="swiper__box">
-           <%= image_tag 'top-cafe.jpg' %>
+            <%= link_to(article_path(6)) do %>
+             <%= image_tag 'top-cafe.jpg' %> <!--カフェ-->
+            <% end %>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="swiper__box">
-            <%= image_tag 'top-solo-camp.jpg' %>
+            <%= link_to(article_path(1)) do %>
+              <%= image_tag 'top-solo-camp.jpg' %> <!--ソロキャン-->
+            <% end %>
           </div>
         </div>
         <div class="swiper-slide">

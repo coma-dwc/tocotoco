@@ -13,21 +13,21 @@
           <tr>
             <td><%= link_to edit_user_path, class: "btn btn-outline-success" do %>
             <i class="fas fa-user-cog"></i>
-            ユーザー情報編集
+            <small>ユーザー情報編集</small>
             <% end %>
             </td>
           </tr>
           <tr>
             <td><%= link_to article_bookmark_path(@user.id), class: "btn btn-outline-warning" do %>
             <i class="fas fa-bookmark"></i>
-            ブックマーク一覧
+            <small>ブックマーク一覧</small>
             <% end %>
             </td>
           </tr>
           <tr>
             <td><%= link_to todos_path, class: "btn btn-outline-info" do %>
             <i class="fas fa-list"></i>
-            Todoリスト
+            <small>Todoリスト</small>
             <% end %>
             </td>
           </tr>

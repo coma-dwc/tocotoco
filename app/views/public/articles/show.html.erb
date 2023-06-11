@@ -26,8 +26,16 @@
 
             <% if @article.user == current_user %>
               <td></td>
-              <td><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-success" %></td><!--Editボタン-->
-              <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td><!--Destroyボタン-->
+              <td>
+                <%= link_to(edit_article_path(@article), class: "btn btn-sm btn-success") do %><!--Editボタン-->
+                <i class="far fa-edit"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to(@article, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger") do %><!--Destroyボタン-->
+                <i class="far fa-trash-alt"></i>
+                <% end %>
+              </td>
             <% end %>
             <% end %>
         </table>
