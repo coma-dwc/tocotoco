@@ -1,20 +1,29 @@
 <table class="table">
-<% article.comments.each do |comment| %>
-  <tr>
-    <td><%= link_to controller: 'public/users', action: 'show', id: comment.user_id do %>
-          <%= image_tag comment.user.get_profile_image, size: '50x50' %>
-        <% end %>
-    </td>
-    <td><%= comment.user.name %>：</td>
-    <td><%= safe_join(comment.body.split("\n"),tag(:br)) %></td>
-    <td>(<%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>)</td>
-    <td>
-      <% if comment.user == current_user || admin_signed_in? %>
-        <%= link_to article_comment_path(article_id: comment.article_id, id: comment.id), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } do %>
-        <i class="far fa-trash-alt"></i>
-        <% end %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+  <% article.comments.each do |comment| %>
+    <tr>
+      <td class="border-top">
+        <div class="d-flex align-items-center">
+          <%= link_to controller: 'public/users', action: 'show', id: comment.user_id do %>
+            <%= image_tag comment.user.get_profile_image, size: '50x50' %>
+          <% end %>
+          <span class="comment-user"><%= comment.user.name %>：</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="border border-0"><%= safe_join(comment.body.split("\n"), tag(:br)) %></td>
+    </tr>
+    <tr>
+      <td class="border border-0">
+        <div class="d-flex justify-content-start align-items-center">
+          <span class="comment-time">(<%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>)</span>
+          <% if comment.user == current_user || admin_signed_in? %>
+            <%= link_to article_comment_path(article_id: comment.article_id, id: comment.id), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
 </table>

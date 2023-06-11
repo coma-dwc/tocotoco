@@ -57,8 +57,8 @@
             <div id="map"></div>
             <style>
               #map {
-                width: 300px;
-                height: 200px;
+                width: 350px;
+                height: 250px;
               }
             </style>
             <!--googleマップ用の javascript -->
@@ -73,7 +73,7 @@
               let transitLayer = new google.maps.TransitLayer();
               transitLayer.setMap(map);
 
-              let contentString = '【住所】<%= @article.address %>';
+              let contentString = '【場所】<%= @article.address %>';
               let infowindow = new google.maps.InfoWindow({
                 content: contentString
               });
