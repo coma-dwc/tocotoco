@@ -3,7 +3,7 @@
 
 
 ## サイト概要
-
+![トップページ](https://github.com/coma-dwc/tocotoco/assets/125862959/01f05a2a-c162-481d-b998-535be62ad3f0)
 ### サイトテーマ
 
 マイナーなお出かけスポットを検索したり、実際に自分が行ったお出かけスポットを投稿することが出来るコミュニティサイト
@@ -38,9 +38,9 @@
 
 ## 設計書
 
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1F860Gat4eXF3elsR5LEAhWnZm-dTVWGoaf3sarpqB00/edit?usp=sharing)
-[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/16srDB3yXTKFbV4GBBAR8mJPBs1fD-bgyxVF57f1Du_I/edit?usp=sharing)
-[ER図](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1yLM3WNfOl4aEdo-7xzRKNKDekkNptI1i)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1F860Gat4eXF3elsR5LEAhWnZm-dTVWGoaf3sarpqB00/edit?usp=sharing)
+- [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/16srDB3yXTKFbV4GBBAR8mJPBs1fD-bgyxVF57f1Du_I/edit?usp=sharing)
+- [ER図](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1yLM3WNfOl4aEdo-7xzRKNKDekkNptI1i)
 
 
 
@@ -64,4 +64,4 @@
 - 画像：[写真AC](https://www.photo-ac.com/)
 - 　　　[デザインAC](https://www.design-ac.net/)
 - 　　　[イラストAC](https://www.ac-illust.com/)
-
+- サムネイル作成 [Canva](https://www.canva.com/)
