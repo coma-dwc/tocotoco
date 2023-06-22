@@ -1,4 +1,19 @@
 <div class="container">
+  <!--エラーメッセージ-->
+  <div class="row">
+  <% if @article.errors.any? %>
+    <div class="col-lg-10 mx-auto">
+      <div class="alert alert-danger">
+        <h5><strong>エラーが発生しました！</strong></h5>
+        <ul>
+          <% @article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
   <div class="row">
     <h4 class="heading col-lg-auto mt-3 text-center">新規記事投稿</h4>
   </div>
