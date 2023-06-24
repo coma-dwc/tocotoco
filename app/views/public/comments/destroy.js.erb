@@ -1,1 +1,6 @@
-$('#article-comments').html("<%= j(render "/public/comments/comment", article: @article, current_user: @user) %>");
+<% if @comment.destroyed? %>
+  <!--// コメント削除成功の処理-->
+  alert("コメントが削除されました");
+<% end %>
+
+$('#article-comments').html("<%= j(render partial: "public/comments/comment", locals: { article: @article }) %>");

@@ -40,6 +40,9 @@ class Public::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @comment = Comment.new
     @tags =  @article.hashtags
+    if @comment.destroyed?
+      redirect_to article_path(params[:id]), notice: "コメントが削除されました"
+    end
   end
 
   def edit
